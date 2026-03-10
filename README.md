@@ -17,17 +17,17 @@ A collection of custom Claude Code skills for development workflows.
 Install all skills:
 
 ```bash
-npx skills zackbart/skills
+npx skills add zackbart/skills
 ```
 
 Or install a single skill:
 
 ```bash
-npx skills zackbart/skills/kysely
-npx skills zackbart/skills/design-system-patterns
-npx skills zackbart/skills/optimize-prompt
-npx skills zackbart/skills/second-opinion
-npx skills zackbart/skills/update-docs
+npx skills add zackbart/skills/kysely
+npx skills add zackbart/skills/design-system-patterns
+npx skills add zackbart/skills/optimize-prompt
+npx skills add zackbart/skills/second-opinion
+npx skills add zackbart/skills/update-docs
 ```
 
 Browse skills at [skills.sh/zackbart/skills](https://skills.sh/zackbart/skills). Requires [Claude Code](https://claude.com/claude-code).
