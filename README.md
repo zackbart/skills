@@ -30,4 +30,4 @@ npx skills zackbart/skills/second-opinion
 npx skills zackbart/skills/update-docs
 ```
 
-Requires [Claude Code](https://claude.com/claude-code).
+Browse skills at [skills.sh/zackbart/skills](https://skills.sh/zackbart/skills). Requires [Claude Code](https://claude.com/claude-code).
