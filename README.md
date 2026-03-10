@@ -12,6 +12,22 @@ A collection of custom Claude Code skills for development workflows.
 | [second-opinion](second-opinion/) | Spawns a skeptical critic subagent to pressure-test plans and proposals before execution |
 | [update-docs](update-docs/) | Scans project documentation for staleness and inaccuracies, then updates it to reflect the current codebase |
 
-## Usage
+## Installation
 
-These skills are designed for use with [Claude Code](https://claude.com/claude-code). Install by adding the skill directory to your Claude Code skills path, or symlink individual skills into `~/.claude/skills/`.
+Install all skills:
+
+```bash
+npx skills zackbart/skills
+```
+
+Or install a single skill:
+
+```bash
+npx skills zackbart/skills/kysely
+npx skills zackbart/skills/design-system-patterns
+npx skills zackbart/skills/optimize-prompt
+npx skills zackbart/skills/second-opinion
+npx skills zackbart/skills/update-docs
+```
+
+Requires [Claude Code](https://claude.com/claude-code).

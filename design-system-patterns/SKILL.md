@@ -1,18 +1,12 @@
 ---
 name: design-system-patterns
 description: >
-  A principled design system skill for building SaaS and product UI that matches
-  the quality of Linear, Stripe, Notion, and Vercel. Use this skill whenever the
-  user wants to: generate a UI spec for a screen or feature, audit existing UI
-  against design principles, or asks questions like "how should I design X",
-  "does this UI look right", "review my component", "generate a design spec",
-  "what's wrong with this UI". Also triggers on: component audit, UI review,
-  dark mode setup, SaaS dashboard design, onboarding flow design, navigation
-  design, form design, empty state design. This skill grounds all output in three
-  Design Ethos volumes covering core principles (Nielsen, Laws of UX, Apple HIG),
-  visual language (typography, color, spacing, motion), and SaaS patterns
-  (onboarding, navigation, components). Use it proactively — if the user is
-  building or reviewing any kind of product UI, this skill should be active.
+  A principled design system skill for building SaaS and product UI at the quality
+  of Linear, Stripe, Notion, and Vercel. Generates UI specs, audits components,
+  and answers design questions. Grounded in three Design Ethos volumes (core
+  principles, visual language, SaaS patterns). Use proactively whenever the user
+  is designing, reviewing, or building product UI — dashboards, forms, navigation,
+  onboarding, empty states, dark mode, or any component work.
 allowed-tools: "Read, Grep, Glob, AskUserQuestion"
 ---
 
