@@ -1,3 +1,14 @@
+---
+name: sparkle-win
+description: >
+  WinSparkle auto-update framework for Windows desktop apps. Use this skill when the user is
+  integrating WinSparkle into a Windows application, configuring automatic updates via appcast feeds,
+  signing updates with EdDSA, setting up win_sparkle_init/cleanup lifecycle, P/Invoke bindings for
+  C#/.NET, configuring registry settings, custom HTTP headers, installer arguments for InnoSetup/MSI/NSIS,
+  or troubleshooting WinSparkle update flows. Also trigger when code includes winsparkle.h, references
+  win_sparkle_* functions, WinSparkle.dll, or appcast XML targeting Windows.
+---
+
 # WinSparkle
 
 Plug-and-forget software update library for Windows applications. C API compatible with all Windows compilers. Shares appcast feed format with macOS Sparkle framework.
