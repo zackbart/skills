@@ -61,3 +61,6 @@ Vitest is a next-generation testing framework powered by Vite. It provides a Jes
 | Benchmarking | Performance benchmarking with Tinybench integration | [advanced-benchmarking](references/advanced-benchmarking.md) |
 | In-Source Testing | Writing tests alongside production code | [advanced-in-source](references/advanced-in-source.md) |
 | Reporters | Built-in reporters and custom reporter configuration | [advanced-reporters](references/advanced-reporters.md) |
+| Debugging | VS Code, IntelliJ, Chrome DevTools, inspect flags | [advanced-debugging](references/advanced-debugging.md) |
+| Vitest UI | Interactive browser UI with module graph and coverage | [advanced-ui](references/advanced-ui.md) |
+| Common Errors | Frequent errors and their solutions | [advanced-common-errors](references/advanced-common-errors.md) |
