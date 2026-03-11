@@ -4,7 +4,10 @@ description: >
   Spawns a skeptical critic subagent to pressure-test the current plan, proposal,
   or approach before execution. The critic actively inspects the codebase to verify
   claims, then returns severity-ranked concerns. The main agent must make a hard
-  call on each point and show what actually changed.
+  call on each point and show what actually changed. Use this for medium/high-risk
+  work (architecture, migrations, auth, concurrency, performance, security-sensitive
+  changes, cross-file refactors). Skip for tiny low-risk edits. If requested on a
+  small task, run lightweight mode (max 3 findings).
 allowed-tools: "Agent, Read, Grep, Glob, Bash, AskUserQuestion"
 ---
 
@@ -18,6 +21,26 @@ show concrete changes, not hand-wave.
 ---
 
 ## Workflow
+
+### Activation rules
+
+Use this skill when:
+
+- The plan has non-trivial risk (data loss, outages, security, correctness regressions).
+- The work spans multiple files/components or changes behavior contracts.
+- The user explicitly asks for a second opinion or pressure test.
+
+Do not use this skill when:
+
+- The task is a small mechanical edit with no behavioral risk.
+- The plan is already deterministic and locally verifiable (e.g., typo/docs-only fix).
+- The overhead of a critic pass is greater than the likely value.
+
+If a second opinion is still requested for low-risk work, run **lightweight mode**:
+
+- One critic pass only.
+- Maximum 3 findings.
+- Focus on highest-impact risks only.
 
 ### Step 1 — Build the briefing
 
@@ -41,6 +64,17 @@ clarify before proceeding. A vague input produces a vague critique.
 Use the Agent tool to spawn the `critic` subagent. Pass the full briefing as the
 prompt. Do not duplicate or paraphrase the subagent's own instructions — just send
 the briefing.
+
+Require this output format from the critic:
+
+1. `[SEVERITY] <short title>`
+- `id`: stable identifier like `C1`, `C2`
+- `claim`: what is wrong or risky
+- `evidence`: concrete proof with file references (`path:line`)
+- `impact`: concrete consequence if unaddressed
+- `recommendation`: specific corrective action
+
+Severity must be one of: `critical`, `high`, `medium`, `low`.
 
 ### Step 3 — Present the raw critique
 
@@ -66,6 +100,13 @@ constraint the critic didn't know about, a reason grounded in the codebase.
 
 Format as a numbered list matching the critique. Lead each item with `ACCEPT` or
 `REJECT` in bold.
+
+Use this exact triage shape:
+
+1. `**ACCEPT** C1` or `**REJECT** C1`
+- `decision_reason`: why
+- `evidence`: file/constraint backing the call
+- `plan_change`: exact delta (or `none` if rejected)
 
 ### Step 5 — Show the delta
 

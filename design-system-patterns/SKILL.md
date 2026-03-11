@@ -102,7 +102,7 @@ Relevant items from the Vol. 3 checklist for this screen type.
 
 ---
 
-## Mode 3: UI Audit — Full Protocol
+## Mode 2: UI Audit — Full Protocol
 
 ### Step 1: Load All Three Reference Volumes
 

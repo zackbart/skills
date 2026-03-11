@@ -39,6 +39,27 @@ Spawn the `docs-scanner` subagent. Pass it a briefing containing:
 The scanner will return a structured report of what documentation exists, what's
 outdated, and what's missing. Display the full report to the user.
 
+Require this scanner output shape:
+
+```json
+{
+  "summary": "short overview",
+  "findings": [
+    {
+      "id": "F1",
+      "severity": "high",
+      "doc_path": "README.md",
+      "issue": "what is stale/incorrect/missing",
+      "evidence": ["src/server.ts:42", "package.json:12"],
+      "recommended_change": "specific update to apply",
+      "confidence": "high"
+    }
+  ]
+}
+```
+
+Severity must be one of: `high`, `medium`, `low`.
+
 ---
 
 ## Step 2 — User approval
@@ -74,6 +95,22 @@ subagents in parallel.
 
 Each writer returns the changes it made. Collect all results.
 
+Require this writer output shape:
+
+```json
+{
+  "finding_id": "F1",
+  "file_path": "README.md",
+  "status": "updated",
+  "changes_summary": [
+    "Replaced old install command with current script"
+  ],
+  "unresolved_questions": []
+}
+```
+
+Status must be one of: `updated`, `skipped`, `blocked`.
+
 ---
 
 ## Step 4 — Summary
@@ -86,3 +123,11 @@ After all writers complete, present a file-by-file summary:
 
 If any writer encountered something it couldn't resolve (ambiguous source of truth,
 conflicting information), flag it for the user.
+
+Use this summary format:
+
+1. `<file path>`
+- `status`: updated/skipped/blocked
+- `what changed`: brief bullet(s)
+- `left alone`: brief note
+- `follow-up`: unresolved questions (if any)

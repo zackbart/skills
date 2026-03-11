@@ -61,9 +61,9 @@ Ask the user if they want to adjust anything. Common refinements:
 
 ## Reference Material
 
-When the prompt is complex (over 20 lines) or you are unsure about best practices for the prompt type, read the relevant reference file before drafting:
+When the prompt is complex (over 20 lines) or you are unsure about best practices for the prompt type, read the relevant local reference file before drafting:
 
-- For system prompts: Read `references/system-prompts.md` in the dev skill directory
-- For agentic/tool-use prompts: Read `references/agentic-prompts.md` in the dev skill directory
+- For system prompts: Read `references/system-prompts.md`
+- For agentic/tool-use prompts: Read `references/agentic-prompts.md`
 
 Do not read these for simple prompts — only when the added depth would meaningfully improve the draft.

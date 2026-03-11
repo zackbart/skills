@@ -6,10 +6,12 @@ description: >
   writing migrations, or asking how to do SQL operations (SELECT, INSERT, UPDATE, DELETE, JOIN,
   CTE, MERGE, transactions) in Kysely. Also trigger when the user mentions kysely in their code,
   imports from 'kysely', has a Database interface with table types, or asks about type-safe SQL
-  in TypeScript. Activate even if they just say "query builder" or "how do I do X in kysely" or
-  paste code that uses selectFrom/insertInto/updateTable/deleteFrom patterns. This skill covers
-  relations (jsonArrayFrom/jsonObjectFrom), expression builders, raw SQL via the sql tag,
-  conditional queries, reusable helpers, schema management, plugins, and all Kysely patterns.
+  in TypeScript. Also trigger on common misspellings like "kaisley" and "kysley". Activate even
+  if they just say "query builder" or "how do I do X in kysely" or paste code that uses
+  selectFrom/insertInto/updateTable/deleteFrom patterns. This skill covers relations
+  (jsonArrayFrom/jsonObjectFrom), expression builders, raw SQL via the sql tag, conditional
+  queries, reusable helpers, schema management, migrations, execution pipeline/debugging, plugins,
+  and all Kysely patterns.
 ---
 
 # Kysely Query Builder
@@ -30,6 +32,8 @@ When the user needs Kysely help, consult the reference files for detailed patter
 
 - **`references/examples.md`** — Complete code examples for SELECT, WHERE, JOIN, INSERT, UPDATE, DELETE, MERGE, transactions, and CTEs
 - **`references/recipes.md`** — Advanced patterns: relations, reusable helpers, data types, raw SQL, conditional selects, expressions, schemas, plugins, extending Kysely, introspection, and logging
+- **`references/migrations.md`** — Migrator setup and production-safe migration flows (`migrateToLatest`, directional up/down, target migration, rollback all, error handling)
+- **`references/execution.md`** — Query lifecycle internals and practical debugging/performance patterns (`compile`, `executeQuery`, `stream`, `explain`, plugins)
 
 Read the relevant reference file section before generating code. The examples there are drawn directly from the official Kysely documentation and represent the canonical way to use each feature.
 
@@ -111,3 +115,5 @@ import { ParseJSONResultsPlugin, CamelCasePlugin, DeduplicateJoinsPlugin } from 
 - **Mutating queries instead of reassigning** — The builder is immutable. `query.where(...)` returns a new query; it doesn't modify the existing one.
 - **Not importing dialect-specific helpers** — `jsonArrayFrom` and `jsonObjectFrom` come from `kysely/helpers/postgres` (or `/mysql`/`/sqlite`), not from `kysely` directly.
 - **JSON parsing issues** — If the database driver returns JSON columns as strings instead of objects, add `ParseJSONResultsPlugin` to the Kysely instance.
+- **Using app DB types in migrations** — Migration callbacks should accept `Kysely<any>`, not your runtime app `Database` type.
+- **Assuming migrations throw by default** — Migrator methods return a result set with `error`; always check it and fail explicitly.
