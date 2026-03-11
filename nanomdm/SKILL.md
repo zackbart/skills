@@ -1,18 +1,10 @@
 ---
 name: nanomdm
 description: >
-  NanoMDM Apple MDM server expert assistant. Use this skill whenever the user is working with
-  NanoMDM (github.com/micromdm/nanomdm), building Apple MDM solutions, implementing MDM check-in
-  handlers (Authenticate, TokenUpdate, CheckOut, UserAuthenticate, SetBootstrapToken,
-  GetBootstrapToken, DeclarativeManagement, GetToken), managing command queues, sending APNs push
-  notifications, configuring storage backends (filekv, mysql, pgsql, inmem, file, diskv, multi),
-  writing NanoMDM service middleware, implementing webhook callbacks, handling certificate
-  authentication, working with enrollment IDs, setting up Declarative Management proxying,
-  using the NanoMDM HTTP API (push, enqueue, pushcert, escrowkeyunlock, migration), building
-  enrollment profiles (mobileconfig), generating MDM commands with cmdr.py, or integrating
-  with the NanoMDM Go library. Also trigger when code imports 'github.com/micromdm/nanomdm',
-  references MDM service interfaces, uses the certauth middleware, or mentions nano2nano migration.
-  This skill covers NanoMDM v0.9.x.
+  NanoMDM Apple MDM server assistant (v0.9.x). Use when working with NanoMDM
+  (github.com/micromdm/nanomdm) — building MDM check-in handlers, command queues, APNs push,
+  storage backends, service middleware, webhook callbacks, certificate auth, enrollment profiles,
+  or the NanoMDM HTTP API. Also triggers when code imports 'github.com/micromdm/nanomdm'.
 ---
 
 # NanoMDM Apple MDM Server (v0.9.x)
