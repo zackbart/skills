@@ -17,6 +17,7 @@ A collection of custom Claude Code skills for development workflows.
 | [sparkle-win](sparkle-win/) | WinSparkle auto-update framework for Windows desktop apps with appcast feeds and EdDSA signing |
 | [typebox](typebox/) | TypeBox JSON Schema type builder assistant for TypeScript |
 | [update-docs](update-docs/) | Scans project documentation for staleness and inaccuracies, then updates it to reflect the current codebase |
+| [zod](zod/) | Zod v4 TypeScript-first validation library with schemas, parsing, type inference, JSON Schema, and error handling |
 | [vitest](vitest/) | Vitest testing framework with Jest-compatible API, coverage, mocking, and browser mode |
 
 ## Installation
@@ -42,6 +43,7 @@ npx skills add zackbart/skills/sparkle-win
 npx skills add zackbart/skills/typebox
 npx skills add zackbart/skills/update-docs
 npx skills add zackbart/skills/vitest
+npx skills add zackbart/skills/zod
 ```
 
 Browse skills at [skills.sh/zackbart/skills](https://skills.sh/zackbart/skills). Requires [Claude Code](https://claude.com/claude-code).
