@@ -24,17 +24,6 @@ A collection of custom Claude Code skills for development workflows.
 | [vitest](technical/vitest/) | Vitest testing framework with Jest-compatible API, coverage, mocking, and browser mode |
 | [zod](technical/zod/) | Zod v4 TypeScript-first validation library with schemas, parsing, type inference, JSON Schema, and error handling |
 
-## Using Design & UI Skills Together
-
-These four external skills work best as a layered pipeline:
-
-1. **design-system-patterns** (spec) — Start here. Use `/ui-spec` to generate structured specs and `/ui-audit` to review existing UI. This is your planning and quality gate layer.
-2. **emil-design-eng** (knowledge) — Loaded automatically. Gives the model deep animation/interaction expertise — exact easing curves, spring configs, gesture physics, performance traps. Informs how code gets written.
-3. **impeccable** (refinement) — Use iteratively during and after build. Targeted commands like `/polish`, `/typeset`, `/arrange`, `/animate`, `/audit` each address a specific dimension of quality. Run `/teach-impeccable` once per project to set context.
-4. **ui-skills** (fixes) — Use for targeted audits: `fixing-accessibility` for a11y, `fixing-motion-performance` for animation perf, `fixing-metadata` for SEO/OG tags, `wcag-audit-patterns` for WCAG 2.2 compliance.
-
-> **Tip:** `design-system-patterns` and `impeccable` both have audit commands — use design-system-patterns for spec-level review (layout, component choice, spacing) and impeccable `/audit` for implementation-level review (a11y, theming, responsive, performance).
-
 ## Recommended External Skills
 
 | Skill | Description |
