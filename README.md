@@ -29,8 +29,8 @@ A collection of custom Claude Code skills for development workflows.
 | Skill | Description |
 |-------|-------------|
 | [cursor/deslop](https://github.com/cursor/plugins/tree/main/cursor-team-kit/skills/deslop) | Removes AI-generated code slop — unnecessary comments, defensive checks, `any` casts, and deeply nested code inconsistent with codebase style |
-| [emilkowalski/skill](https://github.com/emilkowalski/skill) | Design and engineering principles for building better user interfaces |
-| [ibelick/ui-skills](https://github.com/ibelick/ui-skills) | Specialized skills to enhance and refine AI-generated UIs — baseline styling, accessibility, metadata, and animation performance |
+| [emilkowalski/skill](https://github.com/emilkowalski/skill/tree/main/skills/emil-design-eng) | Design and engineering principles for building better user interfaces |
+| [ibelick/ui-skills](https://github.com/ibelick/ui-skills/tree/main/skills) | Specialized skills to enhance and refine AI-generated UIs — baseline styling, accessibility, metadata, and animation performance |
 | [kepano/defuddle](https://github.com/kepano/obsidian-skills/tree/main/skills/defuddle) | Extracts clean markdown from web pages using Defuddle CLI, stripping clutter like navigation and ads to save tokens |
 | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) | Design guidance and commands to help AI assistants generate better frontend interfaces by steering away from common design mistakes |
 | [getsentry/sentry-fix-issues](https://github.com/getsentry/sentry-for-ai/tree/main/skills/sentry-fix-issues) | Find and fix Sentry issues using MCP — analyzes stack traces, breadcrumbs, and context to identify root causes |
