@@ -1,7 +1,7 @@
 ---
-name: design-system-patterns
+name: ui-design-ethos
 description: >
-  A principled design system skill for building SaaS and product UI at the quality
+  A principled design ethos skill for building SaaS and product UI at the quality
   of Linear, Stripe, Notion, and Vercel. Generates UI specs, audits components,
   and answers design questions. Grounded in three Design Ethos volumes (core
   principles, visual language, SaaS patterns). Use proactively whenever the user
