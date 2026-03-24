@@ -25,6 +25,7 @@ These 12 skills are installed globally (`~/.agents/skills/`) on this machine. Co
 | defuddle | `kepano/obsidian-skills` | `npx skills add -g kepano/obsidian-skills --skill defuddle --agent claude-code -y` |
 | deslop | `cursor/plugins` | `npx skills add -g cursor/plugins --skill deslop --agent claude-code -y` |
 | emil-design-eng | `emilkowalski/skill` | `npx skills add -g emilkowalski/skill --skill emil-design-eng --agent claude-code -y` |
+| find-skills | `vercel-labs/skills` | `npx skills add -g vercel-labs/skills --skill find-skills --agent claude-code -y` |
 | sentry-fix-issues | `getsentry/sentry-agent-skills` | `npx skills add -g getsentry/sentry-agent-skills --skill sentry-fix-issues --agent claude-code -y` |
 | skill-creator | `anthropics/skills` | `npx skills add -g anthropics/skills --skill skill-creator --agent claude-code -y` |
 | use-railway | `railwayapp/railway-skills` | `npx skills add -g railwayapp/railway-skills --skill use-railway --agent claude-code -y` |
@@ -48,6 +49,7 @@ npx skills add -g emilkowalski/skill --skill emil-design-eng --agent claude-code
 npx skills add -g getsentry/sentry-agent-skills --skill sentry-fix-issues --agent claude-code -y
 npx skills add -g anthropics/skills --skill skill-creator --agent claude-code -y
 npx skills add -g railwayapp/railway-skills --skill use-railway --agent claude-code -y
+npx skills add -g vercel-labs/skills --skill find-skills --agent claude-code -y
 ```
 
 ## Global Plugins
