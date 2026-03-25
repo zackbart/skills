@@ -66,6 +66,27 @@ These templates define the structure for each generated ethos document. Use hybr
 
 [Same structure — aim for 4-8 principles total]
 
+## When Principles Conflict
+
+When two principles pull in opposite directions, use this priority stack (highest wins):
+
+1. [Highest-priority principle] — always wins in a direct conflict
+2. [Second-priority principle]
+3. [Third-priority principle]
+[... ordered by the user's stated priorities from the interview]
+
+**Example:** [Principle A] says keep it simple, but [Principle B] says make it secure.
+Because security ranks higher, add the security measure even if it adds complexity —
+but look for the simplest secure option first.
+
+## Decision Tests
+
+These scenarios validate that the principles above produce the right answers:
+
+- **Q:** Should we [scenario]? → **A:** [Principle X] says [answer because reason].
+- **Q:** Should we [scenario]? → **A:** [Principle Y] says [answer because reason].
+- **Q:** Should we [scenario]? → **A:** [Non-goal Z] says [answer because reason].
+
 </principles>
 ```
 
@@ -75,6 +96,8 @@ These templates define the structure for each generated ethos document. Use hybr
 - The **This means** section is the most important part. It's what agents actually use to make decisions. Be specific: "Choose PostgreSQL over NoSQL for new data models" not "Use the right tool for the job."
 - 4-8 principles is the sweet spot. Fewer than 4 means you haven't thought hard enough. More than 8 means some aren't load-bearing — cut them.
 - Order by importance. An agent under time pressure may only read the first 3.
+- **When Principles Conflict** must reflect the user's actual priority order from the interview. The example should use two real principles from the generated list.
+- **Decision Tests** should be 2-3 scenarios that a contributor might actually face. Generate these from the interview answers — they double as verification that the ethos captures what the user meant.
 
 ---
 

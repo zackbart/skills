@@ -63,6 +63,23 @@ Use Glob to check if `ethos/` already exists in the project root.
 
 Read `references/output-formats.md` to understand the target format for all 3 documents.
 
+### Step 2.5: Codebase Reconnaissance
+
+Before starting the interview, silently scan the project to inform your questions.
+Read/check (don't narrate this to the user):
+
+- `README.md` — project description, stated audience, tech stack
+- `CLAUDE.md` / `AGENTS.md` — existing conventions or philosophy
+- `package.json`, `pyproject.toml`, `Cargo.toml`, or equivalent — dependencies, scripts
+- Top-level directory structure via Glob (`*`) — what modules/areas exist
+
+Use these findings to:
+- Generate persona options grounded in the actual project (not generic archetypes)
+- Pre-fill non-goal options based on what the project clearly isn't
+- Ask about things you noticed rather than generic tradeoffs
+- Skip questions the codebase already answers (e.g., don't ask "who is this for?" if
+  the README has a clear audience statement — instead confirm and ask follow-ups)
+
 ### Step 3: Interview — Vision
 
 Ask 2-4 questions using AskUserQuestion. Core questions:
@@ -91,6 +108,10 @@ Ask 2-3 questions using AskUserQuestion:
 
 Based on answers, ask 1-2 follow-ups if a principle needs clarification.
 
+4. **When two principles conflict, which one wins?** e.g., "Security makes something
+   harder to use — do you choose security or simplicity?" This produces a priority
+   stack that agents can use as a tiebreaker for real decisions.
+
 ### Step 5: Interview — Non-Goals
 
 Ask 1-2 questions using AskUserQuestion:
@@ -100,6 +121,29 @@ Ask 1-2 questions using AskUserQuestion:
    "Backwards compatibility with v1"), plus "Other."
 2. **What should an agent working on this project never optimize for?** This catches
    non-goals that aren't obvious from the codebase.
+
+### Interview Guidance: Multi-Select and "All of the Above"
+
+Many interview questions benefit from multi-select. When offering options, explicitly
+tell the user they can pick more than one: "Pick all that apply (or add your own via
+Other)." After they select multiple options, follow up to rank them: "You picked A, B,
+and C — if you had to order them by importance, what's the ranking?"
+
+If the user selects ALL options or says "all of the above," follow up with a forcing
+question: "If you had to pick the ONE that matters most, which would it be?" The goal
+is to surface priority, not just agreement. Every option being equally important means
+none of them are — push for differentiation.
+
+### Step 5.5: Synthesis Playback
+
+Before generating files, present a brief synthesis of what you heard:
+
+> "Here's what I took away from our conversation — [3-5 bullet points covering the
+> key vision, principles, and non-goals]. Anything I'm missing or getting wrong?"
+
+Use AskUserQuestion with options like "Looks good, generate the files" / "Let me
+clarify something." This catches misinterpretations before they're baked into prose —
+especially important when the user gave rich free-text answers.
 
 ### Step 6: Generate Files
 
@@ -115,8 +159,25 @@ generate all three files:
 - Every principle must have a concrete **This means** section
 - Every non-goal must have a **What to do instead** redirect
 - Personas must be specific enough to change agent behavior
-- Keep each file focused — vision.md should be under 80 lines, principles.md under 100,
+- Keep each file focused — vision.md should be under 80 lines, principles.md under 120,
   non-goals.md under 60
+- **Deduplication pass:** After drafting all three files, check for concepts that appear
+  in both principles.md and non-goals.md. If something is a scoping principle (what we
+  focus on), keep it in principles. If it's a boundary (what we refuse to do), keep it
+  in non-goals. Never both.
+
+### Step 6.5: Decision Tests
+
+Generate 2-3 "decision tests" — hypothetical scenarios the ethos should resolve — and
+present them to the user:
+
+> "To make sure this captures what you meant, here are a few test decisions:"
+> - Q: Should we add a GraphQL layer? → A: Principle "Simplicity over flexibility" says no — stick with REST unless a specific consumer needs it.
+> - Q: Should we support IE11? → A: Non-goal "Legacy browser support" says no — redirect to the progressive enhancement approach.
+
+Ask: "Do these answers match your intuition?" If any feel wrong, revisit the relevant
+principle or non-goal before finalizing. These tests also get appended to principles.md
+as a "Decision Tests" section (see output-formats.md template).
 
 ### Step 7: Add CLAUDE.md Pointer
 
