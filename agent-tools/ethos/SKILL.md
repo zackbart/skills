@@ -91,6 +91,22 @@ Ask 2-4 questions using AskUserQuestion. Core questions:
 3. **What does success look like?** Not metrics — what observable outcome would mean
    this project achieved its purpose?
 
+**Contextual follow-ups** — ask these when the codebase reconnaissance (Step 2.5) suggests relevance:
+
+4. **Are there sub-groups within this persona?** If a persona has distinct variants that share
+   a role but differ in context or needs (e.g., small-team admin vs. enterprise admin), ask
+   the user to describe each sub-group. Only probe when the codebase or answers suggest the
+   persona isn't monolithic.
+5. **What platforms does this target?** Ask when the project supports multiple platforms or
+   when the codebase structure might mislead about platform priorities. Clarify which platforms
+   are primary, which are secondary/support surfaces, and correct any misconceptions.
+6. **What are the 3-4 things this product must do excellently before adding anything new?**
+   Ask for user-facing products to establish a positive scope boundary. Skip for libraries
+   or developer tools where capabilities are obvious from the API.
+7. **How should this product talk to users?** Ask for user-facing products: what tone, what
+   framing choices (e.g., "boundaries not surveillance"), what words to avoid. Skip for
+   libraries, CLIs, or internal tools unless brand voice matters.
+
 Based on answers, ask 1-2 follow-up questions if something is ambiguous or interesting.
 Then ask: **"Is there another distinct user group?"** Repeat until the user says no.
 
@@ -106,7 +122,12 @@ Ask 2-3 questions using AskUserQuestion:
 3. **What's a technical decision you've made that surprised people?** This often
    reveals the most distinctive principles.
 
-Based on answers, ask 1-2 follow-ups if a principle needs clarification.
+Based on answers, ask 1-2 follow-ups if a principle needs clarification. Then:
+
+3.5. **What tradeoffs in this project never fully resolve?** These are tensions where both
+   sides are valid and the answer requires judgment every time — unlike principles (clear
+   stance) or non-goals (clear boundary). Offer examples based on what you've learned:
+   e.g., "security vs. onboarding simplicity," "school authority vs. family autonomy."
 
 4. **When two principles conflict, which one wins?** e.g., "Security makes something
    harder to use — do you choose security or simplicity?" This produces a priority
@@ -159,12 +180,17 @@ generate all three files:
 - Every principle must have a concrete **This means** section
 - Every non-goal must have a **What to do instead** redirect
 - Personas must be specific enough to change agent behavior
-- Keep each file focused — vision.md should be under 80 lines, principles.md under 120,
-  non-goals.md under 60
+- Keep each file focused — vision.md should be under 100 lines, principles.md under 140,
+  non-goals.md under 70
+- **Optional sections:** Platform Scope, Core Capabilities, How We Talk About This (vision.md)
+  and Tensions We Live With (principles.md) are contextual — only generate them if the
+  interview surfaced relevant content. Don't force these on every project.
 - **Deduplication pass:** After drafting all three files, check for concepts that appear
-  in both principles.md and non-goals.md. If something is a scoping principle (what we
-  focus on), keep it in principles. If it's a boundary (what we refuse to do), keep it
-  in non-goals. Never both.
+  in multiple documents. If something is a scoping principle (what we focus on), keep it
+  in principles. If it's a boundary (what we refuse to do), keep it in non-goals. A tension
+  belongs in principles if it describes a tradeoff requiring ongoing judgment — but if one
+  side of the tension is something you've firmly decided against, that side belongs in
+  non-goals instead. No concept should appear in more than one document.
 
 ### Step 6.5: Decision Tests
 
@@ -178,6 +204,12 @@ present them to the user:
 Ask: "Do these answers match your intuition?" If any feel wrong, revisit the relevant
 principle or non-goal before finalizing. These tests also get appended to principles.md
 as a "Decision Tests" section (see output-formats.md template).
+
+**Codebase grounding:** Where possible, ground each decision test in real code. After
+generating a test scenario, grep the codebase for implementations that embody the answer —
+e.g., point to how rules are exposed in the frontend routes, or how schedule policies work
+in backend services. This makes tests verifiable, not just philosophical. Follow the format
+guidance in `references/output-formats.md`.
 
 ### Step 7: Add CLAUDE.md Pointer
 
@@ -219,6 +251,14 @@ For each file, verify:
 - **non-goals.md:** Has at least 2 non-goals, each with Why not and What to do instead
 
 Flag any missing or empty sections.
+
+Additionally, check for optional sections that the current templates support but the
+existing ethos may predate:
+- **vision.md:** Platform Scope, Core Capabilities, How We Talk About This
+- **principles.md:** Tensions We Live With
+
+Flag these as "available but not present" rather than missing — they are enhancements,
+not requirements. Mention them in the report as potential additions.
 
 ### Step 3: Check Relevance
 
@@ -282,6 +322,11 @@ Ask 2-3 questions focused on what might have changed:
 2. **What triggered this refresh?** Understanding the motivation helps target the update
    (e.g., "we pivoted audiences" vs. "we changed our tech stack" leads to very
    different questions).
+
+3. **New sections available:** If the target document is missing optional sections that the
+   current format supports (e.g., Platform Scope, Core Capabilities, or How We Talk About
+   This for vision.md; Tensions We Live With for principles.md), mention them and ask if
+   the user wants to add them as part of the refresh.
 
 Follow up based on answers — but keep it focused. This isn't a full init interview.
 
