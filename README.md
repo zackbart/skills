@@ -4,12 +4,13 @@ A collection of custom Claude Code skills for development workflows.
 
 ## Global Skills Install
 
-These 12 skills are installed globally (`~/.agents/skills/`) on this machine. Codex reads them directly; Claude Code and Cursor get symlinks.
+These 13 skills are installed globally (`~/.agents/skills/`) on this machine. Codex reads them directly; Claude Code and Cursor get symlinks.
 
-### From this repo (3)
+### From this repo (4)
 
 | Skill | Install |
 |-------|---------|
+| [ethos](agent-tools/ethos/) | `npx skills add -g zackbart/skills --skill ethos --agent claude-code -y` |
 | [ui-design-ethos](agent-tools/ui-design-ethos/) | `npx skills add -g zackbart/skills --skill ui-design-ethos --agent claude-code -y` |
 | [optimize-prompt](agent-tools/optimize-prompt/) | `npx skills add -g zackbart/skills --skill optimize-prompt --agent claude-code -y` |
 | [update-docs](agent-tools/update-docs/) | `npx skills add -g zackbart/skills --skill update-docs --agent claude-code -y` |
@@ -34,6 +35,7 @@ These 12 skills are installed globally (`~/.agents/skills/`) on this machine. Co
 
 ```bash
 # From this repo
+npx skills add -g zackbart/skills --skill ethos --agent claude-code -y
 npx skills add -g zackbart/skills --skill ui-design-ethos --agent claude-code -y
 npx skills add -g zackbart/skills --skill optimize-prompt --agent claude-code -y
 npx skills add -g zackbart/skills --skill update-docs --agent claude-code -y
@@ -72,6 +74,7 @@ These skills live in this repo and are installed per-project, not globally.
 
 | Skill | Description |
 |-------|-------------|
+| [ethos](agent-tools/ethos/) | Generate and maintain project vision, principles, personas, and non-goals — the 50k-foot "why behind the what" for agents and humans |
 | [ui-design-ethos](agent-tools/ui-design-ethos/) | Principled design ethos for building SaaS/product UI at the quality level of Linear, Stripe, Notion, and Vercel |
 | [optimize-prompt](agent-tools/optimize-prompt/) | Prompt engineering assistant optimized for Claude models — drafts and refines system, task, and agentic prompts |
 | [update-docs](agent-tools/update-docs/) | Scans project documentation for staleness and inaccuracies, then updates it to reflect the current codebase |

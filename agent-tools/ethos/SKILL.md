@@ -1,0 +1,242 @@
+---
+name: ethos
+description: >
+  Generate an ethos/ folder that captures a project's vision, principles, personas,
+  and non-goals — the 50k-foot "why behind the what." Use when the user wants to
+  establish project philosophy, define guiding principles, document who the product
+  is for, or create foundational context that agents and humans can reference for
+  decision-making. Triggers: "create an ethos", "define project principles",
+  "document our vision", "set up project philosophy", "who is this product for."
+argument-hint: "<init | audit | refresh [vision|principles|non-goals]>"
+allowed-tools: "Write, Read, Glob, Grep, AskUserQuestion"
+---
+
+# Project Ethos Generator
+
+Generate and maintain an `ethos/` folder that gives agents and humans the strategic
+context behind a project. Three documents, all interview-generated:
+
+- **vision.md** — Why this exists, who it's for, what success looks like
+- **principles.md** — Technical and product tradeoffs, guardrails, beliefs
+- **non-goals.md** — What the project intentionally avoids
+
+## Modes
+
+Detect the correct mode from context. If the user says "ethos" without specifying,
+check whether `ethos/` exists in the project root:
+- If no: run `/ethos:init`
+- If yes: run `/ethos:audit`
+
+### Mode 1: `/ethos:init` — Generate Ethos
+
+**Trigger:** No `ethos/` folder exists, or user explicitly asks to create one.
+**What it does:** Adaptive interview → generates all 3 files → adds CLAUDE.md pointer.
+**Read before running:** `references/output-formats.md`
+
+### Mode 2: `/ethos:audit` — Audit Existing Ethos
+
+**Trigger:** `ethos/` folder exists and user wants to check if it's still accurate.
+**What it does:** Reads ethos docs, scans codebase, reports completeness and relevance.
+
+### Mode 3: `/ethos:refresh` — Update a Specific Document
+
+**Trigger:** User wants to update a specific ethos doc (e.g., `/ethos:refresh vision`).
+**What it does:** Reads the existing doc → targeted re-interview → surgical update.
+**Read before running:** `references/output-formats.md`
+
+---
+
+## Mode 1: Init — Full Protocol
+
+This skill is fundamentally an interview tool. Unlike clarification questions in other
+skills, the interview here IS the product — it surfaces beliefs the user hasn't
+articulated yet. The adaptive flow asks core questions first, then follows up where
+answers reveal something interesting.
+
+### Step 1: Check for Existing Ethos
+
+Use Glob to check if `ethos/` already exists in the project root.
+- If it exists: warn the user and ask if they want to overwrite or run audit instead.
+- If not: proceed.
+
+### Step 2: Read Output Templates
+
+Read `references/output-formats.md` to understand the target format for all 3 documents.
+
+### Step 3: Interview — Vision
+
+Ask 2-4 questions using AskUserQuestion. Core questions:
+
+1. **Why does this project exist?** What problem does it solve, and why is that problem
+   worth solving? (Free text via "Other" — don't constrain with options here)
+2. **Who is the primary user?** Offer 3-4 persona archetypes based on what you can
+   infer from the codebase (package.json, README, etc.), plus "Other."
+3. **What does success look like?** Not metrics — what observable outcome would mean
+   this project achieved its purpose?
+
+Based on answers, ask 1-2 follow-up questions if something is ambiguous or interesting.
+Then ask: **"Is there another distinct user group?"** Repeat until the user says no.
+
+### Step 4: Interview — Principles
+
+Ask 2-3 questions using AskUserQuestion:
+
+1. **What tradeoff would a new contributor get wrong?** e.g., "They'd over-engineer
+   the auth system" or "They'd optimize for performance when we care about DX."
+   Offer 3-4 common tradeoff pairs as options.
+2. **When you disagree with a PR, what's usually the reason?** This surfaces unstated
+   beliefs about code quality, architecture, or product direction.
+3. **What's a technical decision you've made that surprised people?** This often
+   reveals the most distinctive principles.
+
+Based on answers, ask 1-2 follow-ups if a principle needs clarification.
+
+### Step 5: Interview — Non-Goals
+
+Ask 1-2 questions using AskUserQuestion:
+
+1. **What has this project intentionally said no to?** Offer 3-4 options based on
+   common non-goals for the project type (e.g., "Enterprise features," "Multi-tenancy,"
+   "Backwards compatibility with v1"), plus "Other."
+2. **What should an agent working on this project never optimize for?** This catches
+   non-goals that aren't obvious from the codebase.
+
+### Step 6: Generate Files
+
+Using the interview answers and the templates from `references/output-formats.md`,
+generate all three files:
+
+1. Write `ethos/vision.md`
+2. Write `ethos/principles.md`
+3. Write `ethos/non-goals.md`
+
+**Generation rules:**
+- Use the user's own words where possible — don't sanitize their voice into corporate speak
+- Every principle must have a concrete **This means** section
+- Every non-goal must have a **What to do instead** redirect
+- Personas must be specific enough to change agent behavior
+- Keep each file focused — vision.md should be under 80 lines, principles.md under 100,
+  non-goals.md under 60
+
+### Step 7: Add CLAUDE.md Pointer
+
+Check if CLAUDE.md (or AGENTS.md) exists in the project root:
+
+- **If it exists:** Check if an ethos section is already present. If not, append:
+
+```markdown
+
+## Project Ethos
+
+Read the `ethos/` directory for the project's vision, principles, personas,
+and non-goals. Consult these before making architectural or UX decisions.
+```
+
+- **If it doesn't exist:** Skip. Don't create CLAUDE.md — that's the user's decision.
+  Instead, tell the user: "Consider adding a pointer to ethos/ in your CLAUDE.md."
+
+### Step 8: Summary
+
+Present what was generated:
+- List the 3 files with a 1-line summary of each
+- Note the CLAUDE.md status (updated / already had pointer / no CLAUDE.md found)
+- Offer: "Want me to adjust anything?"
+
+---
+
+## Mode 2: Audit — Full Protocol
+
+### Step 1: Read Existing Ethos
+
+Read all files in `ethos/`. If any of the 3 expected files are missing, flag them.
+
+### Step 2: Check Completeness
+
+For each file, verify:
+- **vision.md:** Has a Why section, at least one persona, and success criteria
+- **principles.md:** Has at least 3 principles, each with Why and This means sections
+- **non-goals.md:** Has at least 2 non-goals, each with Why not and What to do instead
+
+Flag any missing or empty sections.
+
+### Step 3: Check Relevance
+
+Scan the codebase for signals that the ethos may have drifted:
+
+- **Tech stack changes:** Use Glob/Grep to check if technologies mentioned in principles
+  still appear in the codebase (e.g., a principle about PostgreSQL when the project
+  moved to SQLite)
+- **Structural shifts:** Check if the project's scope has visibly expanded or narrowed
+  since the ethos was written (new top-level directories, major dependency changes)
+- **Persona validity:** Check if the README or docs still describe the same target users
+
+Don't flag style or wording issues — only substantive drift.
+
+### Step 4: Report
+
+Output a structured report:
+
+```
+## Ethos Audit
+
+### Completeness
+- [x] vision.md — all sections present
+- [ ] principles.md — missing "This means" on principle 3
+- [x] non-goals.md — all sections present
+
+### Relevance Flags
+- [flag]: principles.md mentions Express but package.json uses Fastify
+- [flag]: No persona matches the new API consumer audience added in v2
+
+### Recommendations
+- [action]: Update principles.md to reflect Fastify migration
+- [action]: Consider adding an API consumer persona to vision.md
+```
+
+If everything checks out, say so briefly and don't invent issues.
+
+---
+
+## Mode 3: Refresh — Full Protocol
+
+### Step 1: Parse Target
+
+The user specifies which doc to refresh: `vision`, `principles`, or `non-goals`.
+If not specified, ask which one.
+
+### Step 2: Read Existing Document
+
+Read the target file from `ethos/`. Present a brief summary of what's currently there.
+
+### Step 3: Read Output Templates
+
+Read `references/output-formats.md` for the target format.
+
+### Step 4: Targeted Re-Interview
+
+Ask 2-3 questions focused on what might have changed:
+
+1. **What's different now?** Present the current content summary and ask what no
+   longer holds or what's missing.
+2. **What triggered this refresh?** Understanding the motivation helps target the update
+   (e.g., "we pivoted audiences" vs. "we changed our tech stack" leads to very
+   different questions).
+
+Follow up based on answers — but keep it focused. This isn't a full init interview.
+
+### Step 5: Surgical Update
+
+Rewrite only the sections that changed. Preserve the user's original voice in
+sections that still hold. Don't reformat or rephrase content that isn't being updated.
+
+### Step 6: Summary
+
+Show what changed with a brief diff summary. Offer to adjust.
+
+---
+
+## Reference Files
+
+| File | When to Read |
+|------|-------------|
+| `references/output-formats.md` | Before generating files (init) or updating files (refresh) |
