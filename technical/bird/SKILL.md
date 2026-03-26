@@ -6,8 +6,8 @@ description: >
   browse their home timeline, manage bookmarks or likes, follow/unfollow users, view followers or
   following lists, look up user profiles, get trending topics, or do anything involving Twitter/X
   from the command line. Also trigger when the user mentions "bird", "bird cli", "bunx bird",
-  tweets, Twitter, X posts, timeline, or wants to automate any Twitter/X workflow. This skill
-  covers bird v0.8.0 run via `bunx bird`.
+  "npx bird", tweets, Twitter, X posts, timeline, or wants to automate any Twitter/X workflow.
+  This skill covers bird v0.8.0 run via `bunx bird` or `npx bird`.
 ---
 
 # Bird CLI (v0.8.0)
@@ -16,9 +16,9 @@ You are an expert at using the bird CLI to interact with Twitter/X. Bird talks t
 
 ## Setup
 
-Bird is run via `bunx bird` (or `bunx @steipete/bird`). It authenticates by reading cookies from your browser. The user's Chrome "Default" profile is already configured and working.
+Bird is run via `bunx bird` (preferred) or `npx bird` as a fallback. Use whichever package runner is available — try `bunx` first, then `npx`. It authenticates by reading cookies from your browser. The user's Chrome "Default" profile is already configured and working.
 
-Every command needs auth. If a command fails with credential errors, try adding `--chrome-profile "Default"` explicitly, or run `bunx bird check` to diagnose.
+Every command needs auth. If a command fails with credential errors, try adding `--chrome-profile "Default"` explicitly, or run `bunx bird check` (or `npx bird check`) to diagnose.
 
 ## Core Principles
 
@@ -40,142 +40,142 @@ The SKILL.md covers the most common workflows. For detailed per-command options 
 
 ```bash
 # Check who you're logged in as
-bunx bird whoami
+npx bird whoami
 
 # Verify credentials are available
-bunx bird check
+npx bird check
 
 # Look up a user's profile info
-bunx bird about @username --json
+npx bird about @username --json
 ```
 
 ### Posting
 
 ```bash
 # Post a tweet
-bunx bird tweet "hello world"
+npx bird tweet "hello world"
 
 # Tweet with media
-bunx bird tweet "check this out" --media /path/to/image.png --alt "description"
+npx bird tweet "check this out" --media /path/to/image.png --alt "description"
 
 # Tweet with multiple images (up to 4)
-bunx bird tweet "gallery" --media img1.png --media img2.png --alt "first" --alt "second"
+npx bird tweet "gallery" --media img1.png --media img2.png --alt "first" --alt "second"
 
 # Reply to a tweet
-bunx bird reply <tweet-id-or-url> "nice post"
+npx bird reply <tweet-id-or-url> "nice post"
 
 # Reply with media
-bunx bird reply <tweet-id-or-url> "here's a screenshot" --media /path/to/screenshot.png
+npx bird reply <tweet-id-or-url> "here's a screenshot" --media /path/to/screenshot.png
 ```
 
 ### Reading
 
 ```bash
 # Read a single tweet
-bunx bird read <tweet-id-or-url>
+npx bird read <tweet-id-or-url>
 
 # Read as JSON (for parsing)
-bunx bird read <tweet-id-or-url> --json
+npx bird read <tweet-id-or-url> --json
 
 # Shorthand — just pass the ID/URL directly
-bunx bird <tweet-id-or-url>
+npx bird <tweet-id-or-url>
 
 # View a full conversation thread
-bunx bird thread <tweet-id-or-url>
+npx bird thread <tweet-id-or-url>
 
 # List replies to a tweet
-bunx bird replies <tweet-id-or-url>
+npx bird replies <tweet-id-or-url>
 ```
 
 ### Timelines & Feeds
 
 ```bash
 # Home timeline ("For You")
-bunx bird home
+npx bird home
 
 # Chronological "Following" feed
-bunx bird home --following
+npx bird home --following
 
 # A user's tweets
-bunx bird user-tweets @handle
+npx bird user-tweets @handle
 
 # Your mentions
-bunx bird mentions
+npx bird mentions
 
 # Someone else's mentions
-bunx bird mentions -u @handle
+npx bird mentions -u @handle
 ```
 
 ### Search
 
 ```bash
 # Basic search
-bunx bird search "claude code"
+npx bird search "claude code"
 
 # Search with count
-bunx bird search "from:anthropic" -n 20
+npx bird search "from:anthropic" -n 20
 
 # Search as JSON for processing
-bunx bird search "AI agents" --json
+npx bird search "AI agents" --json
 
 # Paginate through all results
-bunx bird search "topic" --all --max-pages 3
+npx bird search "topic" --all --max-pages 3
 ```
 
 ### Social
 
 ```bash
 # Follow / unfollow
-bunx bird follow @username
-bunx bird unfollow @username
+npx bird follow @username
+npx bird unfollow @username
 
 # List who you follow
-bunx bird following --json
+npx bird following --json
 
 # List your followers
-bunx bird followers --json
+npx bird followers --json
 
 # Check another user's following/followers (needs user ID, not handle)
-bunx bird following --user <userId>
-bunx bird followers --user <userId>
+npx bird following --user <userId>
+npx bird followers --user <userId>
 ```
 
 ### Bookmarks & Likes
 
 ```bash
 # View bookmarks
-bunx bird bookmarks
+npx bird bookmarks
 
 # View likes
-bunx bird likes
+npx bird likes
 
 # Remove a bookmark
-bunx bird unbookmark <tweet-id-or-url>
+npx bird unbookmark <tweet-id-or-url>
 ```
 
 ### Lists
 
 ```bash
 # View your lists
-bunx bird lists --json
+npx bird lists --json
 
 # Get tweets from a list
-bunx bird list-timeline <list-id-or-url>
+npx bird list-timeline <list-id-or-url>
 ```
 
 ### Trending & News
 
 ```bash
 # AI-curated news and trending
-bunx bird news
+npx bird news
 
 # Specific tabs
-bunx bird news --trending-only
-bunx bird news --news-only
-bunx bird news --for-you
+npx bird news --trending-only
+npx bird news --news-only
+npx bird news --for-you
 
 # Include related tweets
-bunx bird news --with-tweets
+npx bird news --with-tweets
 ```
 
 ## Common Patterns
@@ -184,7 +184,7 @@ bunx bird news --with-tweets
 
 ```bash
 # Read a tweet as JSON and extract text
-bunx bird read <url> --json --plain
+npx bird read <url> --json --plain
 ```
 
 ### Paginate through large result sets
@@ -193,13 +193,13 @@ Most list commands support `--all` (fetch everything) or `--max-pages N` (cap pa
 
 ```bash
 # Get all bookmarks
-bunx bird bookmarks --all --json
+npx bird bookmarks --all --json
 
 # Get 3 pages of search results
-bunx bird search "query" --all --max-pages 3 --json
+npx bird search "query" --all --max-pages 3 --json
 
 # Resume pagination
-bunx bird search "query" --cursor "DAABCg..."
+npx bird search "query" --cursor "DAABCg..."
 ```
 
 ### Thread expansion for bookmarks
@@ -208,13 +208,13 @@ Bookmarks have special thread-expansion flags for pulling context around bookmar
 
 ```bash
 # Include full author reply chains
-bunx bird bookmarks --author-chain --json
+npx bird bookmarks --author-chain --json
 
 # Include parent tweet for non-root bookmarks
-bunx bird bookmarks --include-parent
+npx bird bookmarks --include-parent
 
 # Full reply chain connected to bookmark
-bunx bird bookmarks --full-chain-only
+npx bird bookmarks --full-chain-only
 ```
 
 ## Configuration
@@ -236,5 +236,5 @@ Environment variables: `NO_COLOR`, `BIRD_TIMEOUT_MS`, `BIRD_COOKIE_TIMEOUT_MS`, 
 
 - **`--all` on list-timeline** can get your account banned per the CLI's own warning — use `--max-pages` instead
 - **Tweet IDs are strings** — they're too large for JavaScript number precision. When working with JSON output, treat them as strings
-- **Query IDs rotate** — bird auto-refreshes and caches GraphQL query IDs. If you hit weird errors, run `bunx bird query-ids --fresh` to force a refresh
+- **Query IDs rotate** — bird auto-refreshes and caches GraphQL query IDs. If you hit weird errors, run `npx bird query-ids --fresh` to force a refresh
 - **Cookie extraction requires keychain access** — the user may need to enter their macOS password when bird first reads Chrome cookies

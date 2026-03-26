@@ -48,7 +48,7 @@ These flags work on every command:
 Post a new tweet.
 
 ```
-bunx bird tweet <text>
+npx bird tweet <text>
 ```
 
 | Argument | Description |
@@ -62,7 +62,7 @@ Supports `--media` and `--alt` global flags for attachments.
 Reply to an existing tweet.
 
 ```
-bunx bird reply <tweet-id-or-url> <text>
+npx bird reply <tweet-id-or-url> <text>
 ```
 
 | Argument | Description |
@@ -81,10 +81,10 @@ Supports `--media` and `--alt` global flags for attachments.
 Fetch and display a single tweet.
 
 ```
-bunx bird read <tweet-id-or-url>
+npx bird read <tweet-id-or-url>
 ```
 
-Shorthand: `bunx bird <tweet-id-or-url>` (just pass the ID/URL directly).
+Shorthand: `npx bird <tweet-id-or-url>` (just pass the ID/URL directly).
 
 | Option | Description |
 |--------|-------------|
@@ -96,7 +96,7 @@ Shorthand: `bunx bird <tweet-id-or-url>` (just pass the ID/URL directly).
 Show the full conversation thread containing a tweet.
 
 ```
-bunx bird thread <tweet-id-or-url>
+npx bird thread <tweet-id-or-url>
 ```
 
 | Option | Description |
@@ -113,7 +113,7 @@ bunx bird thread <tweet-id-or-url>
 List replies to a tweet.
 
 ```
-bunx bird replies <tweet-id-or-url>
+npx bird replies <tweet-id-or-url>
 ```
 
 | Option | Description |
@@ -134,7 +134,7 @@ bunx bird replies <tweet-id-or-url>
 Get your home timeline.
 
 ```
-bunx bird home
+npx bird home
 ```
 
 | Option | Description |
@@ -149,7 +149,7 @@ bunx bird home
 Find tweets mentioning a user.
 
 ```
-bunx bird mentions
+npx bird mentions
 ```
 
 | Option | Description |
@@ -164,7 +164,7 @@ bunx bird mentions
 Get tweets from a user's profile timeline.
 
 ```
-bunx bird user-tweets <handle>
+npx bird user-tweets <handle>
 ```
 
 | Option | Description |
@@ -181,7 +181,7 @@ bunx bird user-tweets <handle>
 ## Search
 
 ```
-bunx bird search <query>
+npx bird search <query>
 ```
 
 Query supports Twitter search operators like `from:username`, `@mention`, `"exact phrase"`, etc.
@@ -202,8 +202,8 @@ Query supports Twitter search operators like `from:username`, `@mention`, `"exac
 ### follow / unfollow
 
 ```
-bunx bird follow <username-or-id>
-bunx bird unfollow <username-or-id>
+npx bird follow <username-or-id>
+npx bird unfollow <username-or-id>
 ```
 
 Accepts username with or without `@`, or a user ID.
@@ -213,7 +213,7 @@ Accepts username with or without `@`, or a user ID.
 Get users that you (or another user) follow.
 
 ```
-bunx bird following
+npx bird following
 ```
 
 | Option | Description |
@@ -230,7 +230,7 @@ bunx bird following
 Get users that follow you (or another user).
 
 ```
-bunx bird followers
+npx bird followers
 ```
 
 Same options as `following`.
@@ -244,7 +244,7 @@ Same options as `following`.
 Get your bookmarked tweets.
 
 ```
-bunx bird bookmarks
+npx bird bookmarks
 ```
 
 | Option | Description |
@@ -275,7 +275,7 @@ bunx bird bookmarks
 Remove bookmarked tweets.
 
 ```
-bunx bird unbookmark <tweet-id-or-url...>
+npx bird unbookmark <tweet-id-or-url...>
 ```
 
 Accepts one or more tweet IDs or URLs.
@@ -285,7 +285,7 @@ Accepts one or more tweet IDs or URLs.
 Get your liked tweets.
 
 ```
-bunx bird likes
+npx bird likes
 ```
 
 | Option | Description |
@@ -306,7 +306,7 @@ bunx bird likes
 Get your Twitter lists.
 
 ```
-bunx bird lists
+npx bird lists
 ```
 
 | Option | Description |
@@ -320,7 +320,7 @@ bunx bird lists
 Get tweets from a list timeline.
 
 ```
-bunx bird list-timeline <list-id-or-url>
+npx bird list-timeline <list-id-or-url>
 ```
 
 | Option | Description |
@@ -341,8 +341,8 @@ bunx bird list-timeline <list-id-or-url>
 Fetch AI-curated news and trending topics from Explore tabs.
 
 ```
-bunx bird news
-bunx bird trending
+npx bird news
+npx bird trending
 ```
 
 | Option | Description |
@@ -368,7 +368,7 @@ bunx bird trending
 Show which Twitter account the current credentials belong to.
 
 ```
-bunx bird whoami
+npx bird whoami
 ```
 
 No additional options beyond global flags.
@@ -378,7 +378,7 @@ No additional options beyond global flags.
 Get account origin and location information for a user.
 
 ```
-bunx bird about <username>
+npx bird about <username>
 ```
 
 | Option | Description |
@@ -394,7 +394,7 @@ bunx bird about <username>
 Check credential availability. Shows which cookies were found and from which source.
 
 ```
-bunx bird check
+npx bird check
 ```
 
 ### query-ids
@@ -402,7 +402,7 @@ bunx bird check
 Show or refresh cached Twitter GraphQL query IDs.
 
 ```
-bunx bird query-ids
+npx bird query-ids
 ```
 
 | Option | Description |
