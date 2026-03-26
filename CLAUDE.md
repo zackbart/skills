@@ -1,4 +1,4 @@
-# Skills Repository (v0.1.2)
+# Skills Repository (v0.1.3)
 
 This repo contains reusable Claude Code skills. Each skill lives in its own directory with a `SKILL.md` and optional `references/` folder.
 

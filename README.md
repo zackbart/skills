@@ -1,4 +1,4 @@
-# Skills (v0.1.2)
+# Skills (v0.1.3)
 
 A collection of custom Claude Code skills for development workflows.
 
@@ -83,6 +83,7 @@ These skills live in this repo and are installed per-project, not globally.
 
 | Skill | Description |
 |-------|-------------|
+| [bird](technical/bird/) | Bird CLI assistant for Twitter/X — tweeting, replying, reading, searching, and managing timelines from the terminal |
 | [fastify](technical/fastify/) | Fastify web framework expert for building HTTP servers and APIs |
 | [kysely](technical/kysely/) | Type-safe SQL query builder assistant grounded in official Kysely documentation |
 | [nanomdm](technical/nanomdm/) | NanoMDM Apple MDM server assistant for check-in handlers, command queues, and APNs push |
