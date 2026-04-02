@@ -20,6 +20,7 @@ Skills in this repo are installable per-project or globally.
 
 | Skill | Description |
 |-------|-------------|
+| [android-device-owner](technical/android-device-owner/) | Android Device Owner Mode (DPC) assistant for DevicePolicyManager, app management, web filtering, kiosk mode, and user restrictions |
 | [fastify](technical/fastify/) | Fastify web framework expert for building HTTP servers and APIs |
 | [kysely](technical/kysely/) | Type-safe SQL query builder assistant grounded in official Kysely documentation |
 | [nanomdm](technical/nanomdm/) | NanoMDM Apple MDM server assistant for check-in handlers, command queues, and APNs push |
