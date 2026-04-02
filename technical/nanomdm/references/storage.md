@@ -1,5 +1,14 @@
 # NanoMDM Storage Backends & Schemas
 
+## Table of Contents
+
+1. [Storage Interfaces (storage/)](#storage-interfaces-storage)
+2. [MySQL Backend (storage/mysql/)](#mysql-backend-storagemysql)
+3. [PostgreSQL Backend (storage/pgsql/)](#postgresql-backend-storagepgsql)
+4. [Key-Value Backend (storage/kv/)](#key-value-backend-storagekv)
+5. [Multi-Storage (storage/allmulti/)](#multi-storage-storageallmulti)
+6. [Common Storage Patterns](#common-storage-patterns)
+
 ## Storage Interfaces (storage/)
 
 ### AllStorage (the union of all storage interfaces)

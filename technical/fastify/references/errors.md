@@ -2,6 +2,29 @@
 
 Fastify automatically catches both synchronous and asynchronous errors thrown in route handlers and converts them to a `500 Internal Server Error` response.
 
+## Table of Contents
+
+1. [Automatic Error Catching](#automatic-error-catching)
+   1. [Always Throw Error Instances](#always-throw-error-instances)
+2. [Custom Error Handler](#custom-error-handler)
+   1. [setErrorHandler](#seterrorhandler)
+   2. [reply.send(data) in Error Handler](#replysenddata-in-error-handler)
+   3. [Encapsulated Error Handlers](#encapsulated-error-handlers)
+3. [Error Propagation](#error-propagation)
+   1. [Child to Parent Error Handler](#child-to-parent-error-handler)
+4. [onError Hook](#onerror-hook)
+5. [Validation Errors](#validation-errors)
+   1. [error.validation](#errorvalidation)
+   2. [error.validationContext](#errorvalidationcontext)
+6. [setNotFoundHandler](#setnotfoundhandler)
+   1. [Scoped Not Found Handlers](#scoped-not-found-handlers)
+7. [Error Codes (errorCodes)](#error-codes-errorcodes)
+   1. [10 Most Common Error Codes](#10-most-common-error-codes)
+   2. [Creating Custom Errors with Fastify's createError](#creating-custom-errors-with-fastifys-createerror)
+8. [Complete Error Handling Example](#complete-error-handling-example)
+
+---
+
 ## Automatic Error Catching
 
 ```js

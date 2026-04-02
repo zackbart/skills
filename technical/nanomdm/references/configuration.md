@@ -1,5 +1,17 @@
 # NanoMDM Configuration & CLI Flags
 
+## Table of Contents
+
+1. [Environment Variables](#environment-variables)
+2. [nanomdm Server Flags](#nanomdm-server-flags)
+3. [Storage Backend Options](#storage-backend-options)
+4. [nano2nano Migration Tool Flags](#nano2nano-migration-tool-flags)
+5. [Docker Configuration](#docker-configuration)
+6. [Build Configuration (Makefile)](#build-configuration-makefile)
+7. [Enrollment Profile Template](#enrollment-profile-template)
+8. [cmdr.py Command Generator](#cmdrpy-command-generator)
+9. [Example Configurations](#example-configurations)
+
 ## Environment Variables
 
 All flags can also be set via environment variables prefixed with `NANOMDM_`. Flags take precedence over env vars. Env vars listed in brackets below.

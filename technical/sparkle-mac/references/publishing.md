@@ -1,5 +1,22 @@
 # Publishing Updates with Sparkle
 
+## Table of Contents
+
+1. [Archiving Your App](#archiving-your-app)
+2. [Signing Updates](#signing-updates)
+3. [Appcast Format](#appcast-format)
+4. [Versioning](#versioning)
+5. [System Requirements](#system-requirements)
+6. [Major Upgrades](#major-upgrades)
+7. [Critical Updates](#critical-updates)
+8. [Informational Updates (Sparkle 2)](#informational-updates-sparkle-2)
+9. [Phased Group Rollouts](#phased-group-rollouts)
+10. [Channels (Sparkle 2)](#channels-sparkle-2)
+11. [Setting Feed URL Programmatically](#setting-feed-url-programmatically)
+12. [Release Notes](#release-notes)
+13. [Extending the Appcast](#extending-the-appcast)
+14. [Delta Updates](#delta-updates)
+
 ## Archiving Your App
 
 Use Xcode: Product > Archive > Distribute App > Developer ID.

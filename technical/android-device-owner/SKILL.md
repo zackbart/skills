@@ -100,12 +100,12 @@ Device admin XML (`res/xml/device_admin.xml`):
 
 Before generating code, load the relevant reference file(s):
 
-- **Provisioning & setup**: `cat references/provisioning.md`
-- **App hiding, suspension & install**: `cat references/app-management.md`
-- **Website blocking & DNS filtering**: `cat references/web-filtering.md`
-- **Kiosk & lock task mode**: `cat references/kiosk-mode.md`
-- **DISALLOW_* restrictions**: `cat references/user-restrictions.md`
-- **Security, FRP & wipe**: `cat references/security.md`
+- **Provisioning & setup**: `references/provisioning.md`
+- **App hiding, suspension & install**: `references/app-management.md`
+- **Website blocking & DNS filtering**: `references/web-filtering.md`
+- **Kiosk & lock task mode**: `references/kiosk-mode.md`
+- **DISALLOW_* restrictions**: `references/user-restrictions.md`
+- **Security, FRP & wipe**: `references/security.md`
 
 ## Quick API Reference
 

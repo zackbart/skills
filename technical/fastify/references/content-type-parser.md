@@ -2,6 +2,35 @@
 
 Fastify includes built-in parsers for `application/json` and `text/plain` (both UTF-8). For other content types, register custom parsers.
 
+## Table of Contents
+
+1. [Default Parsers](#default-parsers)
+2. [addContentTypeParser](#addcontenttypeparser)
+   1. [Signature](#signature)
+   2. [String Content Type](#string-content-type)
+   3. [Array of Content Types](#array-of-content-types)
+   4. [RegExp Content Type](#regexp-content-type)
+   5. [Async Parser Support](#async-parser-support)
+3. [Parser Options](#parser-options)
+   1. [parseAs](#parseas)
+   2. [bodyLimit](#bodylimit)
+4. [Checking and Removing Parsers](#checking-and-removing-parsers)
+   1. [hasContentTypeParser](#hascontenttypeparser)
+   2. [removeContentTypeParser](#removecontenttypeparser)
+   3. [removeAllContentTypeParsers](#removeallcontenttypeparsers)
+5. [Catch-All Parser](#catch-all-parser)
+6. [Piping Request Streams](#piping-request-streams)
+7. [Content Type Matching Order](#content-type-matching-order)
+8. [HTTP Method Behavior](#http-method-behavior)
+   1. [GET and HEAD](#get-and-head)
+   2. [OPTIONS and DELETE](#options-and-delete)
+9. [Encapsulation](#encapsulation)
+10. [getDefaultJsonParser](#getdefaultjsonparser)
+    1. [Prototype Poisoning Options](#prototype-poisoning-options)
+11. [Complete Example: Multi-Format API](#complete-example-multi-format-api)
+
+---
+
 ## Default Parsers
 
 - `application/json` — parsed with `JSON.parse`, returns JavaScript object

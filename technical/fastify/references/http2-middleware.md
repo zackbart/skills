@@ -1,5 +1,26 @@
 # HTTP/2 & Middleware
 
+## Table of Contents
+
+1. [HTTP/2 Support](#http2-support)
+   1. [HTTPS with HTTP/2](#https-with-http2)
+   2. [ALPN Negotiation with allowHTTP1](#alpn-negotiation-with-allowhttp1)
+   3. [Plain Text HTTP/2 (h2c)](#plain-text-http2-h2c)
+   4. [Testing HTTP/2](#testing-http2)
+   5. [HTTP/2 Server Push](#http2-server-push)
+   6. [HTTP/2 Route Constraints](#http2-route-constraints)
+2. [Middleware](#middleware)
+   1. [Not Supported Out of the Box](#not-supported-out-of-the-box)
+   2. [@fastify/express -- Full Express Compatibility](#fastifyexpress----full-express-compatibility)
+   3. [@fastify/middie -- Simpler Middleware Support](#fastifymiddie----simpler-middleware-support)
+   4. [Middleware Encapsulation via register](#middleware-encapsulation-via-register)
+   5. [No Access to Fastify Reply in Middleware](#no-access-to-fastify-reply-in-middleware)
+   6. [Path-Based Middleware Restriction](#path-based-middleware-restriction)
+3. [Preferred Fastify Alternatives to Middleware](#preferred-fastify-alternatives-to-middleware)
+   1. [Example: Native Fastify Plugins Instead of Middleware](#example-native-fastify-plugins-instead-of-middleware)
+
+---
+
 ## HTTP/2 Support
 
 Fastify has native HTTP/2 support via Node.js's built-in `http2` module.

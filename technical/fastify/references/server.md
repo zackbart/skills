@@ -1,5 +1,55 @@
 # Server API Reference
 
+## Table of Contents
+
+1. [Factory Options](#factory-options)
+   1. [HTTP/HTTPS/HTTP2](#httphttpshttp2)
+   2. [Timeouts and Connections](#timeouts-and-connections)
+   3. [Body Parsing](#body-parsing)
+   4. [Logging](#logging)
+   5. [Server Factory](#server-factory)
+   6. [Request ID](#request-id)
+   7. [Trust Proxy](#trust-proxy)
+   8. [Plugin Timeout](#plugin-timeout)
+   9. [Query String Parser](#query-string-parser)
+   10. [Expose HEAD Routes](#expose-head-routes)
+   11. [Constraints](#constraints)
+   12. [Return 503 on Closing](#return-503-on-closing)
+   13. [AJV Configuration](#ajv-configuration)
+   14. [URL Matching Options](#url-matching-options)
+   15. [Schema Controller](#schema-controller)
+   16. [Schema Error Formatter](#schema-error-formatter)
+   17. [Serializer Options](#serializer-options)
+   18. [Other Options](#other-options)
+2. [Server Instance Methods](#server-instance-methods)
+   1. [.listen(opts)](#listenopts)
+   2. [.close()](#close)
+   3. [.register(plugin, opts)](#registerplugin-opts)
+   4. [.after()](#after)
+   5. [.ready()](#ready)
+   6. [.inject(opts)](#injectopts)
+   7. [.addSchema(schema) / .getSchemas() / .getSchema(id)](#addschemaschema--getschemas--getschemaid)
+   8. [.setValidatorCompiler / .setSerializerCompiler](#setvalidatorcompiler--setserializercompiler)
+   9. [.setErrorHandler(handler)](#seterrorhandlerhandler)
+   10. [.setNotFoundHandler([opts], handler)](#setnotfoundhandleropts-handler)
+   11. [.setReplySerializer(serializer)](#setreplyserializerserializer)
+   12. [.setChildLoggerFactory(factory)](#setchildloggerfactoryfactory)
+   13. [.addHook(name, fn)](#addhookname-fn)
+   14. [.route(opts)](#routeopts)
+   15. [Shorthand Methods](#shorthand-methods)
+   16. [.hasRoute(opts)](#hasrouteopts)
+   17. [.addHttpMethod(method, opts)](#addhttpmethodmethod-opts)
+   18. [Content Type Parsers](#content-type-parsers)
+   19. [.getDefaultJsonParser(onProto, onConstructor)](#getdefaultjsonparseronproto-onconstructor)
+   20. [.printRoutes() / .printPlugins()](#printroutes--printplugins)
+   21. [Decorators](#decorators)
+   22. [.log](#log)
+   23. [.version](#version)
+   24. [.server](#server)
+   25. [.initialConfig](#initialconfig)
+
+---
+
 ## Factory Options
 
 Create a Fastify instance by calling the factory function with an options object.

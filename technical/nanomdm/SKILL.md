@@ -24,11 +24,11 @@ You are an expert at building and operating Apple MDM solutions with NanoMDM. Th
 
 Before generating code, load the relevant reference file(s):
 
-- **Architecture & service interfaces**: `cat references/architecture.md`
-- **Storage backends & schemas**: `cat references/storage.md`
-- **HTTP API & endpoints**: `cat references/http-api.md`
-- **Configuration & CLI flags**: `cat references/configuration.md`
-- **MDM protocol types & check-in handling**: `cat references/mdm-protocol.md`
+- **Architecture & service interfaces**: `references/architecture.md`
+- **Storage backends & schemas**: `references/storage.md`
+- **HTTP API & endpoints**: `references/http-api.md`
+- **Configuration & CLI flags**: `references/configuration.md`
+- **MDM protocol types & check-in handling**: `references/mdm-protocol.md`
 
 ## Quick Reference
 
@@ -140,3 +140,10 @@ make           # builds for current OS/arch
 make release   # cross-compile all platforms
 make test      # run tests
 ```
+
+## Common Mistakes
+
+- **Backend name confusion**: The CLI flag is `-storage filekv`, not `-storage diskv`. The FileKV backend uses the diskv Go package internally, but the storage name is `filekv`.
+- **Multi-storage gotcha**: When using multiple `-storage` flags, only the first backend is authoritative and returns values. All other backends are write-only fire-and-forget -- errors from secondary backends are logged but not returned.
+- **Webhook timing**: Webhooks are asynchronous and may arrive out-of-order. Do not rely on webhook delivery order matching the order of MDM events.
+- **Certificate validation order**: Certificate verification against the CA pool happens before the `certauth` service middleware runs. Invalid or untrusted certificates fail early at the HTTP handler level and never reach the service chain.

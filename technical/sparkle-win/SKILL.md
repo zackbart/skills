@@ -13,9 +13,19 @@ description: >
 
 Plug-and-forget software update library for Windows applications. C API compatible with all Windows compilers. Shares appcast feed format with macOS Sparkle framework.
 
-## When to Use
+## How to Use This Skill
 
-Trigger when working with WinSparkle, `winsparkle.h`, auto-update functionality for Windows desktop apps, or appcast feeds targeting Windows.
+- **Getting started**: Read the Quick Start section below for your language (C/C++ or C#/.NET)
+- **Complete API with all function signatures**: Read `references/api.md`
+- **Migrating from DSA to EdDSA signing**: Read `references/eddsa-migration.md`
+
+## Core Principles
+
+- **Configuration before initialization**: All configuration functions (`set_appcast_url`, `set_eddsa_public_key`, `set_app_details`, etc.) must be called before `win_sparkle_init()`
+- **EdDSA signing required**: Updates must be cryptographically signed with Ed25519; unsigned updates will be rejected
+- **HTTPS everywhere**: The appcast URL, release notes links, and download URLs must all use HTTPS to prevent MITM attacks
+- **Non-blocking checks**: All update check functions (`check_update_with_ui`, `check_update_without_ui`, etc.) return immediately; UI appears asynchronously on a background thread
+- **Minimal first-launch footprint**: WinSparkle does nothing on first launch to avoid distorting the user's first impression of the app
 
 ## Quick Start (C/C++)
 
@@ -362,6 +372,13 @@ See `references/eddsa-migration.md` for step-by-step migration guide.
 | Python | [pywinsparkle](https://pypi.org/project/pywinsparkle/) |
 | Go | [go-winsparkle](https://github.com/abemedia/go-winsparkle) |
 | Pascal | Bundled in WinSparkle source |
+
+## Common Pitfalls
+
+- **Calling `win_sparkle_init()` before configuration functions**: The appcast URL, EdDSA public key, and other settings will be silently ignored if set after initialization
+- **Using HTTP instead of HTTPS**: Serving the appcast, release notes, or download URL over HTTP exposes users to man-in-the-middle attacks that can hide updates or tamper with downloads
+- **Not implementing `can_shutdown_callback`**: Without this callback, the app may force-quit during an update installation, causing users to lose unsaved work
+- **Version mismatch between VERSIONINFO and appcast**: The `ProductVersion` in your executable's VERSIONINFO resource and `sparkle:version` in the appcast must align, or WinSparkle won't detect available updates
 
 ## Resources
 

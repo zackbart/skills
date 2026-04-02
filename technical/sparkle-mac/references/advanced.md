@@ -1,5 +1,16 @@
 # Sparkle Advanced Features
 
+## Table of Contents
+
+1. [Gentle Update Reminders (Sparkle 2.2+)](#gentle-update-reminders-sparkle-22)
+2. [Preferences UI](#preferences-ui)
+3. [Package Updates](#package-updates)
+4. [Testing Sparkle](#testing-sparkle)
+5. [Upgrading from Sparkle 1 to Sparkle 2](#upgrading-from-sparkle-1-to-sparkle-2)
+6. [Custom User Interfaces](#custom-user-interfaces)
+7. [sparkle-cli (Command Line Updater)](#sparkle-cli-command-line-updater)
+8. [Updating Non-App Bundles (Plug-ins, Preference Panes)](#updating-non-app-bundles-plug-ins-preference-panes)
+
 ## Gentle Update Reminders (Sparkle 2.2+)
 
 Sparkle's standard UI shows updates at opportune times:

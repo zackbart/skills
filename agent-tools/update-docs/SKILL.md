@@ -4,10 +4,27 @@ description: >
   Scans project documentation for staleness and inaccuracies, then updates it
   to reflect the current codebase. Uses a read-only scanner subagent to assess
   docs and a writer subagent to apply approved changes. Optionally scoped to
-  a specific area via arguments.
+  a specific area via arguments. Use this skill whenever documentation has
+  drifted from the code, APIs have changed but docs haven't been updated, or
+  the user asks to refresh, audit, or fix their docs. Trigger on phrases like
+  "update the docs", "README is out of date", "docs are stale", "refresh the
+  documentation", "audit docs for accuracy", or "sync docs with code".
 argument-hint: "[focus area, e.g. 'README', 'api docs', 'installation instructions']"
 allowed-tools: "Agent, Read, Grep, Glob, Bash, AskUserQuestion"
 ---
+
+## How to Use This Skill
+
+Invoke this skill when documentation needs updating. Scope it to a specific area or scan everything:
+
+- `/update-docs` — scan all project documentation
+- `/update-docs README` — focus on the README
+- `/update-docs api docs` — focus on API documentation
+- `/update-docs installation instructions` — focus on setup/install guides
+
+This skill delegates to two subagents:
+- **docs-scanner** (read-only): Assesses documentation staleness and identifies inaccuracies
+- **docs-writer**: Applies approved changes using source code as the ground truth
 
 # Documentation Updater
 

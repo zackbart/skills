@@ -1,5 +1,20 @@
 # TypeBox Type Builders Reference
 
+## Table of Contents
+
+1. [Primitive Types](#primitive-types)
+2. [Literal and Enum Types](#literal-and-enum-types)
+3. [Composite Types](#composite-types)
+4. [Modifiers](#modifiers)
+5. [Utility Types](#utility-types)
+6. [Reference and Recursive Types](#reference-and-recursive-types)
+7. [Function Types](#function-types)
+8. [Async and Iterator Types](#async-and-iterator-types)
+9. [String Manipulation Types](#string-manipulation-types)
+10. [Escape Hatch](#escape-hatch)
+11. [Schema Options](#schema-options)
+12. [Type Guards](#type-guards)
+
 ## Primitive Types
 
 ### Type.String

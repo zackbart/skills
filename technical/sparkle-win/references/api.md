@@ -2,6 +2,17 @@
 
 Source: `winsparkle.h` from [github.com/vslavik/winsparkle](https://github.com/vslavik/winsparkle)
 
+## Table of Contents
+
+1. [Initialization](#initialization)
+2. [Language Settings](#language-settings)
+3. [Configuration](#configuration)
+4. [Update Check Settings](#update-check-settings)
+5. [Manual Update Checks](#manual-update-checks)
+6. [Callbacks](#callbacks)
+7. [Complete Integration Example (C++)](#complete-integration-example-c)
+8. [Complete Integration Example (C#)](#complete-integration-example-c-1)
+
 ## Initialization
 
 ### `win_sparkle_init()`

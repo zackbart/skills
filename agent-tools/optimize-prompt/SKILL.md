@@ -3,7 +3,12 @@ name: optimize-prompt
 description: >
   Prompt engineering assistant optimized for Claude models. Drafts and refines
   system prompts, task prompts, and agentic prompts following Anthropic best
-  practices. Helps structure effective prompts before sending them.
+  practices. Helps structure effective prompts before sending them. Use this
+  skill whenever the user asks to write, draft, refine, or improve a prompt
+  for Claude or any LLM -- including system prompts, task instructions, agentic
+  tool-use prompts, or multi-step workflow prompts. Also trigger when the user
+  says "help me prompt", "write a system prompt", "improve this prompt",
+  "prompt engineering", or wants to structure instructions for an AI model.
 argument-hint: "<what you want to accomplish>"
 allowed-tools: "Read, AskUserQuestion"
 ---
@@ -59,11 +64,11 @@ Ask the user if they want to adjust anything. Common refinements:
 - Adding examples
 - Changing output format
 
-## Reference Material
+## How to Use This Skill
 
-When the prompt is complex (over 20 lines) or you are unsure about best practices for the prompt type, read the relevant local reference file before drafting:
+For complex prompts (over 20 lines) or when unsure about best practices, read the relevant reference file before drafting:
 
-- For system prompts: Read `references/system-prompts.md`
-- For agentic/tool-use prompts: Read `references/agentic-prompts.md`
+- **System prompts**: Read `references/system-prompts.md` for role structuring, constraint ordering, and XML tag patterns
+- **Agentic/tool-use prompts**: Read `references/agentic-prompts.md` for tool usage, state management, and subagent patterns
 
-Do not read these for simple prompts — only when the added depth would meaningfully improve the draft.
+Skip these for simple prompts — only consult when the added depth would meaningfully improve the draft.

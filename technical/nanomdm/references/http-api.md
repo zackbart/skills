@@ -1,5 +1,16 @@
 # NanoMDM HTTP API & Endpoints
 
+## Table of Contents
+
+1. [API Authentication](#api-authentication)
+2. [MDM Protocol Endpoints](#mdm-protocol-endpoints)
+3. [API Endpoints](#api-endpoints)
+4. [HTTP Handler Functions](#http-handler-functions)
+5. [Webhook Event Format](#webhook-event-format)
+6. [OpenAPI Spec](#openapi-spec)
+7. [Request Adapter](#request-adapter)
+8. [Service Request Dispatcher](#service-request-dispatcher)
+
 ## API Authentication
 
 All `/v1/` API endpoints use HTTP Basic Authentication:

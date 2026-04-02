@@ -6,6 +6,15 @@ The Value module provides runtime operations on JavaScript values using TypeBox 
 import Value from 'typebox/value'
 ```
 
+## Table of Contents
+
+1. [Validation](#validation)
+2. [Transformation](#transformation)
+3. [Codec Operations](#codec-operations)
+4. [Structural Operations](#structural-operations)
+5. [JSON Pointer (RFC 6901)](#json-pointer-rfc-6901)
+6. [Pipeline](#pipeline)
+
 ## Validation
 
 ### Value.Check

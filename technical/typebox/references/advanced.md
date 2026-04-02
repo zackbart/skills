@@ -1,5 +1,21 @@
 # TypeBox Advanced Features Reference
 
+## Table of Contents
+
+1. [Module System](#module-system)
+2. [Generic Types](#generic-types)
+3. [Mapped Types](#mapped-types)
+4. [Conditional Types](#conditional-types)
+5. [Script Evaluation Types](#script-evaluation-types)
+6. [Codec (Bi-directional Transforms)](#codec-bi-directional-transforms)
+7. [Refine (Custom Validation Logic)](#refine-custom-validation-logic)
+8. [Compile (JIT Compiler)](#compile-jit-compiler)
+9. [Schema Module (Low-Level JSON Schema Validation)](#schema-module-low-level-json-schema-validation)
+10. [Script DSL](#script-dsl)
+11. [Format Module](#format-module)
+12. [System Module](#system-module)
+13. [Migration from @sinclair/typebox (0.34.x)](#migration-from-sinclairtypebox-034x)
+
 ## Module System
 
 Type.Module is an advanced compositing system for referential types. It performs reference inlining, cyclic type resolution, and dead code elimination.

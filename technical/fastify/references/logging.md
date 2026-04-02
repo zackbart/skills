@@ -2,6 +2,37 @@
 
 Fastify uses [Pino](https://getpino.io/) as its default logger. Logging is disabled by default and must be explicitly enabled.
 
+## Table of Contents
+
+1. [Enabling the Logger](#enabling-the-logger)
+2. [Environment-Specific Configuration](#environment-specific-configuration)
+3. [Using the Logger](#using-the-logger)
+   1. [Server-Level Logging](#server-level-logging)
+   2. [Request-Level Logging](#request-level-logging)
+4. [Logger Options](#logger-options)
+   1. [level](#level)
+   2. [file](#file)
+   3. [stream](#stream)
+   4. [transport](#transport)
+5. [Request ID Tracking](#request-id-tracking)
+   1. [requestIdHeader](#requestidheader)
+   2. [genReqId](#genreqid)
+   3. [requestIdLogLabel](#requestidloglabel)
+6. [Custom Serializers](#custom-serializers)
+   1. [Default Serializers](#default-serializers)
+   2. [Custom req/res Serializers](#custom-reqres-serializers)
+   3. [WARNING: Body Cannot Be Serialized in req Serializer](#warning-body-cannot-be-serialized-in-req-serializer)
+   4. [Log Body via preHandler Hook](#log-body-via-prehandler-hook)
+7. [Custom Logger Instances](#custom-logger-instances)
+   1. [Using a Non-Pino Logger](#using-a-non-pino-logger)
+8. [Log Redaction for Sensitive Data](#log-redaction-for-sensitive-data)
+   1. [Advanced Redaction](#advanced-redaction)
+   2. [Redacting in Child Loggers](#redacting-in-child-loggers)
+9. [Per-Plugin Log Level](#per-plugin-log-level)
+10. [Per-Route Log Level](#per-route-log-level)
+
+---
+
 ## Enabling the Logger
 
 ```js

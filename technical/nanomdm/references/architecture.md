@@ -1,5 +1,18 @@
 # NanoMDM Architecture & Service Interfaces
 
+## Table of Contents
+
+1. [Package Structure](#package-structure)
+2. [Layered Architecture](#layered-architecture)
+3. [Core Service Interfaces](#core-service-interfaces)
+4. [Core NanoMDM Service (service/nanomdm/)](#core-nanomdm-service-servicenanomdm)
+5. [Service Middleware](#service-middleware)
+6. [Push System](#push-system)
+7. [Certificate Verification (certverify/)](#certificate-verification-certverify)
+8. [API Layer (api/)](#api-layer-api)
+9. [Crypto Utilities (cryptoutil/)](#crypto-utilities-cryptoutil)
+10. [Middleware Assembly in cmd/nanomdm](#middleware-assembly-in-cmdnanomdm)
+
 ## Package Structure
 
 ```

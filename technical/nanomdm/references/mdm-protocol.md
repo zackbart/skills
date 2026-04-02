@@ -1,5 +1,17 @@
 # NanoMDM MDM Protocol Types & Check-in Handling
 
+## Table of Contents
+
+1. [Core Types (mdm/)](#core-types-mdm)
+2. [Check-in Message Types](#check-in-message-types)
+3. [Command Types](#command-types)
+4. [Check-in Decoding](#check-in-decoding)
+5. [Enrollment Resolution](#enrollment-resolution)
+6. [Command Queue Flow](#command-queue-flow)
+7. [Plist Command Format](#plist-command-format)
+8. [Error Types](#error-types)
+9. [Migration](#migration)
+
 ## Core Types (mdm/)
 
 ### Enrollment

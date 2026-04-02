@@ -2,6 +2,38 @@
 
 Hooks let you intercept specific points in the request/response lifecycle or application lifecycle. Register hooks with `fastify.addHook()`.
 
+## Table of Contents
+
+1. [Request/Reply Hooks (Execution Order)](#requestreply-hooks-execution-order)
+   1. [onRequest](#onrequest)
+   2. [preParsing](#preparsing)
+   3. [preValidation](#prevalidation)
+   4. [preHandler](#prehandler)
+   5. [preSerialization](#preserialization)
+   6. [onError](#onerror)
+   7. [onSend](#onsend)
+   8. [onResponse](#onresponse)
+   9. [onTimeout](#ontimeout)
+   10. [onRequestAbort](#onrequestabort)
+2. [Error Handling from Hooks](#error-handling-from-hooks)
+3. [Responding from a Hook](#responding-from-a-hook)
+4. [Application Hooks](#application-hooks)
+   1. [onReady](#onready)
+   2. [onListen](#onlisten)
+   3. [onClose](#onclose)
+   4. [preClose](#preclose)
+   5. [onRoute](#onroute)
+   6. [onRegister](#onregister)
+5. [Scope and Encapsulation](#scope-and-encapsulation)
+6. [Route-Level Hooks](#route-level-hooks)
+7. [Diagnostics Channel Hooks](#diagnostics-channel-hooks)
+   1. [Initialization Event](#initialization-event)
+   2. [Request TracingChannel Events](#request-tracingchannel-events)
+8. [Common Patterns](#common-patterns)
+   1. [Authentication Hook](#authentication-hook)
+   2. [Request Logging with Timing](#request-logging-with-timing)
+   3. [Payload Decompression in preParsing](#payload-decompression-in-preparsing)
+
 ---
 
 ## Request/Reply Hooks (Execution Order)

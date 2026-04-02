@@ -1,5 +1,31 @@
 # Plugins & Encapsulation
 
+## Table of Contents
+
+1. [Registering Plugins](#registering-plugins)
+   1. [Plugin Function Signature](#plugin-function-signature)
+   2. [ESM Support](#esm-support)
+2. [Plugin Options](#plugin-options)
+   1. [Standard Options](#standard-options)
+   2. [Route Prefixing](#route-prefixing)
+   3. [Options as Function](#options-as-function)
+3. [Error Handling with after/ready/listen](#error-handling-with-afterreadylisten)
+   1. [after()](#after)
+   2. [ready()](#ready)
+   3. [listen()](#listen)
+4. [Encapsulation Model](#encapsulation-model)
+   1. [DAG Structure](#dag-structure)
+   2. [Access Rules](#access-rules)
+   3. [Encapsulation Visualized](#encapsulation-visualized)
+5. [Breaking Encapsulation with fastify-plugin](#breaking-encapsulation-with-fastify-plugin)
+   1. [skip-override Symbol](#skip-override-symbol)
+   2. [When to Use fastify-plugin](#when-to-use-fastify-plugin)
+6. [Sharing State Between Contexts](#sharing-state-between-contexts)
+   1. [Using fastify-plugin for Shared Decorators](#using-fastify-plugin-for-shared-decorators)
+7. [Complete Example: REST API with Auth Scope vs Public Scope](#complete-example-rest-api-with-auth-scope-vs-public-scope)
+
+---
+
 ## Registering Plugins
 
 `fastify.register(plugin, [options])` creates a new encapsulated scope. Every call to `register` creates a child context that inherits from the parent but cannot modify it.

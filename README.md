@@ -22,14 +22,12 @@ Skills in this repo are installable per-project or globally.
 |-------|-------------|
 | [android-device-owner](technical/android-device-owner/) | Android Device Owner Mode (DPC) assistant for DevicePolicyManager, app management, web filtering, kiosk mode, and user restrictions |
 | [fastify](technical/fastify/) | Fastify web framework expert for building HTTP servers and APIs |
-| [kysely](technical/kysely/) | Type-safe SQL query builder assistant grounded in official Kysely documentation |
+| [ios-mdm](technical/ios-mdm/) | Apple iOS/iPadOS MDM protocol expert — commands, configuration profiles, payloads, DDM, and supervision |
 | [nanomdm](technical/nanomdm/) | NanoMDM Apple MDM server assistant for check-in handlers, command queues, and APNs push |
 | [node-pg-migrate](technical/node-pg-migrate/) | PostgreSQL migration expert using node-pg-migrate |
 | [sparkle-mac](technical/sparkle-mac/) | Sparkle macOS auto-update framework for integrating updates, appcasts, and EdDSA signing |
 | [sparkle-win](technical/sparkle-win/) | WinSparkle auto-update framework for Windows desktop apps with appcast feeds and EdDSA signing |
 | [typebox](technical/typebox/) | TypeBox JSON Schema type builder assistant for TypeScript |
-| [vitest](technical/vitest/) | Vitest testing framework with Jest-compatible API, coverage, mocking, and browser mode |
-| [zod](technical/zod/) | Zod v4 TypeScript-first validation library with schemas, parsing, type inference, JSON Schema, and error handling |
 
 Install a skill from this repo into a project:
 

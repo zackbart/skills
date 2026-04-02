@@ -1,5 +1,27 @@
 # Fastify TypeScript Reference (v5.8.x)
 
+## Table of Contents
+
+1. [Getting Started](#getting-started)
+2. [Basic Server Setup](#basic-server-setup)
+3. [Route Generics](#route-generics)
+   1. [Body and Params Generics](#body-and-params-generics)
+4. [Type Providers](#type-providers)
+   1. [TypeBox Example](#typebox-example)
+   2. [json-schema-to-ts Example](#json-schema-to-ts-example)
+5. [Creating Typed Plugins](#creating-typed-plugins)
+   1. [Async Plugin with Declaration Merging](#async-plugin-with-declaration-merging)
+   2. [Plugin with Options](#plugin-with-options)
+   3. [Plugin with Type Provider](#plugin-with-type-provider)
+6. [Extending Request/Reply with Declaration Merging](#extending-requestreply-with-declaration-merging)
+7. [HTTP2 Types](#http2-types)
+8. [Key Types Reference](#key-types-reference)
+9. [Typed Hooks](#typed-hooks)
+10. [Typed Error Handling](#typed-error-handling)
+11. [Tips](#tips)
+
+---
+
 ## Getting Started
 
 ```bash

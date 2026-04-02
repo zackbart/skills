@@ -2,6 +2,35 @@
 
 Decorators extend the Fastify server instance, Request, or Reply objects with custom properties and methods. They are the primary mechanism for sharing functionality across your application.
 
+## Table of Contents
+
+1. [Server Instance Decorators](#server-instance-decorators)
+   1. [decorate(name, value, [dependencies])](#decoratename-value-dependencies)
+2. [Request Decorators](#request-decorators)
+   1. [decorateRequest(name, value, [dependencies])](#decoraterequestname-value-dependencies)
+   2. [Proper Initialization with onRequest Hook](#proper-initialization-with-onrequest-hook)
+   3. [Getter/Setter Pattern](#gettersetter-pattern)
+   4. [setDecorator for Request](#setdecorator-for-request)
+3. [Reply Decorators](#reply-decorators)
+   1. [decorateReply(name, value, [dependencies])](#decoratereplyname-value-dependencies)
+4. [Checking for Decorators](#checking-for-decorators)
+   1. [hasDecorator / hasRequestDecorator / hasReplyDecorator](#hasdecorator--hasrequestdecorator--hasreplydecorator)
+5. [Getting Decorators](#getting-decorators)
+   1. [getDecorator(name)](#getdecoratorname)
+   2. [setDecorator(name, value)](#setdecoratorname-value)
+6. [Dependencies Parameter](#dependencies-parameter)
+7. [Encapsulation Rules](#encapsulation-rules)
+   1. [Same Name in Different Contexts -- OK](#same-name-in-different-contexts--ok)
+   2. [Same Name in Same Context -- Throws](#same-name-in-same-context--throws)
+   3. [Child Overriding Parent](#child-overriding-parent)
+8. [Arrow Functions and `this` Binding](#arrow-functions-and-this-binding)
+9. [V8 Optimization](#v8-optimization)
+   1. [Why Initial Values Matter](#why-initial-values-matter)
+   2. [Initial Value Guidelines](#initial-value-guidelines)
+   3. [Complete Pattern](#complete-pattern)
+
+---
+
 ## Server Instance Decorators
 
 ### decorate(name, value, [dependencies])

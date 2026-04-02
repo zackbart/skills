@@ -4,6 +4,45 @@ Fastify uses a schema-based approach for validation and serialization. Request v
 
 Validation is applied only when the request `Content-Type` is `application/json`, unless the `content` property is used in the body schema to specify per-content-type schemas.
 
+## Table of Contents
+
+1. [Core Concepts](#core-concepts)
+2. [Adding Shared Schemas](#adding-shared-schemas)
+   1. [$ref Patterns](#ref-patterns)
+   2. [Retrieving Schemas](#retrieving-schemas)
+3. [Validation](#validation)
+   1. [Supported Locations](#supported-locations)
+   2. [Complete Schema Example](#complete-schema-example)
+   3. [Body Content-Type Validation](#body-content-type-validation)
+   4. [Ajv Coercion for Querystring Arrays](#ajv-coercion-for-querystring-arrays)
+   5. [Custom Validator Per HTTP Part](#custom-validator-per-http-part)
+4. [Ajv Configuration](#ajv-configuration)
+   1. [Default Settings](#default-settings)
+   2. [WARNING: allErrors and DoS](#warning-allerrors-and-dos)
+   3. [Ajv Plugins](#ajv-plugins)
+5. [Custom Validators](#custom-validators)
+   1. [setValidatorCompiler](#setvalidatorcompiler)
+   2. [Joi Example](#joi-example)
+   3. [Yup Example](#yup-example)
+   4. [Best Practices for Custom Validators](#best-practices-for-custom-validators)
+6. [Validation Error Messages](#validation-error-messages)
+   1. [schemaErrorFormatter](#schemaerrorformatter)
+   2. [Custom errorHandler for Validation Context](#custom-errorhandler-for-validation-context)
+   3. [ajv-errors for Per-Property Messages](#ajv-errors-for-per-property-messages)
+   4. [ajv-i18n for Localization](#ajv-i18n-for-localization)
+7. [Serialization](#serialization)
+   1. [Response Schema by Status Code](#response-schema-by-status-code)
+   2. [Content-Type Specific Response Schemas](#content-type-specific-response-schemas)
+   3. [Performance](#performance)
+   4. [Data Filtering](#data-filtering)
+8. [Serializer Compiler](#serializer-compiler)
+9. [JSON Schema Support Table](#json-schema-support-table)
+10. [Validation Error Response Format](#validation-error-response-format)
+    1. [attachValidation](#attachvalidation)
+11. [Security Warnings](#security-warnings)
+    1. [Schema Definitions Use new Function()](#schema-definitions-use-new-function)
+    2. [$async Ajv Feature](#async-ajv-feature)
+
 ---
 
 ## Core Concepts
