@@ -13,7 +13,7 @@ Skills in this repo are installable per-project or globally.
 | [bird](agent-tools/bird/) | Bird CLI assistant for Twitter/X - tweeting, replying, reading, searching, and managing timelines from the terminal |
 | [ethos](agent-tools/ethos/) | Generate and maintain project vision, principles, personas, and non-goals - the 50k-foot "why behind the what" for agents and humans |
 | [optimize-prompt](agent-tools/optimize-prompt/) | Prompt engineering assistant optimized for Claude models - drafts and refines system, task, and agentic prompts |
-| [ui-design-ethos](agent-tools/ui-design-ethos/) | Principled design ethos for building SaaS/product UI at the quality level of Linear, Stripe, Notion, and Vercel |
+| [ui](agent-tools/ui/) | Practical UI design system with concrete values for hierarchy, spacing, typography, color, shadows, and polish -- makes Claude Code produce professionally designed interfaces |
 | [update-docs](agent-tools/update-docs/) | Scans project documentation for staleness and inaccuracies, then updates it to reflect the current codebase |
 
 ### Technical
