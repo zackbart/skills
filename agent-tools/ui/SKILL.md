@@ -26,16 +26,82 @@ when building any interface.
 4. **Start with too much white space, then remove.** What feels like "a little too much" for one element becomes "just enough" in a full UI.
 5. **Color is an enhancement layer, not a crutch.** If your UI doesn't work in grayscale, color won't save it.
 
+## This Skill Is Opinionated
+
+The point of this skill is to produce interfaces that look professionally designed. It is
+not neutral about what that means. When the project's existing tokens contradict these
+principles, **fix the tokens** -- don't adopt bad decisions for the sake of consistency.
+Consistency with a weak system produces consistently weak UI.
+
+There are exactly two ways to use this skill:
+
+### Mode 1: Fix (existing project)
+
+Before building or styling anything, audit what's there. Every UI task starts with this
+check -- even a "just add a button" task, because the button will inherit whatever's wrong.
+
+1. **Detect the system** (see below).
+2. **Audit against the principles** in this skill (see `references/integration.md` for the
+   full checklist).
+3. **Surface violations** to the user with severity: critical (blocks good UI),
+   significant (worth fixing soon), minor (polish pass).
+4. **Propose concrete fixes as config changes** -- extend `tailwind.config.ts`, add CSS
+   vars to `:root`, update the theme object. Never accept inline overrides as a "fix."
+5. **Then build the feature** using the corrected tokens.
+
+When building a small feature, only fix the parts of the system that affect it. Don't turn
+a button task into a full design system rewrite unless the user wants that.
+
+### Mode 2: Establish (new project or no system)
+
+No tokens exist, or they're so scattered/hardcoded that there's effectively no system.
+Build one using this skill's defaults before writing feature code. Put tokens in the
+project's native format (Tailwind config, `:root` CSS vars, theme file). The config file
+is the design system -- no parallel markdown docs.
+
+### Detection Checklist
+
+Look for these in priority order. The first one you find is the source of truth to audit:
+
+1. **Tailwind config:** `tailwind.config.{js,ts,mjs}` -- custom `theme.extend` values
+2. **CSS custom properties:** `globals.css`, `index.css`, `:root { --* }` declarations
+3. **Theme files:** `theme.{ts,js}`, `tokens.{ts,js,json}`, `design-tokens.*`
+4. **shadcn/ui:** `components/ui/` directory + `tailwind.config` with shadcn tokens
+5. **Styled-components/Emotion theme:** `ThemeProvider` usage, `styled.d.ts`
+6. **Component libraries:** Mantine (`MantineProvider`), Chakra (`ChakraProvider`), MUI (`ThemeProvider`), Radix Themes
+
+If none exist, or tokens exist but are frequently bypassed with hardcoded values in
+components, treat it as Mode 2 (Establish).
+
+### When to Push Back
+
+Push back on the user -- don't silently build on top of a broken system -- when you find:
+
+- Hardcoded hex values scattered through components
+- A single `--primary` with no shade scale (can't build alerts, hovers, or disabled states correctly)
+- Spacing values that aren't on a scale (random 13px, 17px, 22px)
+- No shadow system or just one blurry generic shadow
+- Greys at true 0% saturation (looks dead)
+- Text sizes below 12px in body UI
+- `em`-based type scales (compound incorrectly when nested)
+- Font weights below 400 used for non-decorative text
+
+Name the violation, cite the principle, propose the fix. See `references/integration.md`
+for the full audit checklist and recommendation format.
+
+---
+
 ## Decision-Making Workflow
 
 When building any UI element, work through these layers in order:
 
-1. **Hierarchy** -- What's the most important thing? De-emphasize everything else.
-2. **Spacing** -- Use the spacing scale. Start generous, tighten only if needed.
-3. **Typography** -- Pick from the type scale. Set line-height proportionally.
-4. **Color** -- Apply from the predefined palette. Never pick ad-hoc colors.
-5. **Depth** -- Add shadows only where elevation is meaningful.
-6. **Polish** -- Accent borders, custom bullets, background treatments.
+1. **Detect** -- What design system exists? Use its tokens.
+2. **Hierarchy** -- What's the most important thing? De-emphasize everything else.
+3. **Spacing** -- Use the spacing scale. Start generous, tighten only if needed.
+4. **Typography** -- Pick from the type scale. Set line-height proportionally.
+5. **Color** -- Apply from the predefined palette. Never pick ad-hoc colors.
+6. **Depth** -- Add shadows only where elevation is meaningful.
+7. **Polish** -- Accent borders, custom bullets, background treatments.
 
 Read the relevant reference file for the layer you're working on.
 
@@ -175,10 +241,12 @@ Pick one lane and stay consistent. Mixing square and rounded corners in the same
 
 | File | When to Read |
 |------|-------------|
+| `references/integration.md` | Detecting existing design systems, mapping rules to Tailwind/shadcn/CSS vars, auditing systems, writing design.md |
 | `references/hierarchy-and-spacing.md` | Building layouts, establishing visual hierarchy, spacing decisions |
 | `references/typography.md` | Font selection, type scales, line-height, alignment, letter-spacing |
 | `references/color-system.md` | Building palettes, defining shades, HSL techniques, accessibility |
 | `references/depth-and-shadows.md` | Shadows, elevation, light simulation, flat-design depth, images |
 | `references/polish-and-finishing.md` | Final touches, accent borders, empty states, backgrounds, component innovation |
 
-Read only what's relevant to the current task. Don't load all five for a simple spacing question.
+Read only what's relevant to the current task. Always check `integration.md` first on a new
+project -- it determines whether you're establishing, integrating, or auditing.
