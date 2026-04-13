@@ -39,15 +39,16 @@ Browse skills at [skills.sh/zackbart/skills](https://skills.sh/zackbart/skills).
 
 ## Global Skills
 
-These 15 skills are installed globally (`~/.agents/skills/`) on this machine. Codex reads them directly; Claude Code and Cursor get symlinks.
+These 16 skills are installed globally (`~/.agents/skills/`) on this machine. Codex reads them directly; Claude Code and Cursor get symlinks.
 
-### From this repo (3)
+### From this repo (4)
 
 | Skill | Install |
 |-------|---------|
 | [bird](agent-tools/bird/) | `npx skills add -g zackbart/skills --skill bird --agent claude-code -y` |
 | [ethos](agent-tools/ethos/) | `npx skills add -g zackbart/skills --skill ethos --agent claude-code -y` |
 | [optimize-prompt](agent-tools/optimize-prompt/) | `npx skills add -g zackbart/skills --skill optimize-prompt --agent claude-code -y` |
+| [ui](agent-tools/ui/) | `npx skills add -g zackbart/skills --skill ui --agent claude-code -y` |
 
 ### From external repos (12)
 
@@ -73,6 +74,7 @@ These 15 skills are installed globally (`~/.agents/skills/`) on this machine. Co
 npx skills add -g zackbart/skills --skill bird --agent claude-code -y
 npx skills add -g zackbart/skills --skill ethos --agent claude-code -y
 npx skills add -g zackbart/skills --skill optimize-prompt --agent claude-code -y
+npx skills add -g zackbart/skills --skill ui --agent claude-code -y
 
 # External
 npx skills add -g vercel-labs/agent-browser --skill agent-browser --agent claude-code -y
